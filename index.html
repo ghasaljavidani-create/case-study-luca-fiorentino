@@ -1,758 +1,799 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cabinet d'Expert — Luca Fiorentino · Case Study · Nayadrift</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cabinet d'Expert — Luca Fiorentino · Case Study · Nayadrift</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
 
-    :root {
-      --cream:  #F3EEE7;
-      --cream2: #EEE7DF;
-      --cream3: #EAE3D4;
-      --dark:   #2F3B38;
-      --warm:   #8C7158;
-      --body-c: #5E5A54;
-      --sage:   #AEB8AE;
-      --ann:    #7D9180;
-      --border: #DDD6CF;
-      --bord2:  #D8CFC3;
-      --doc-bg: #FBF7EE;
-      --hdr:    64px;
-      --pad:    clamp(28px, 4.4vw, 64px);
-      --serif:  'Cormorant Garamond', Georgia, serif;
-      --sans:   'Inter', system-ui, sans-serif;
-    }
+:root {
+--cream: #F3EEE7;
+--cream2: #EEE7DF;
+--cream3: #EAE3D4;
+--dark: #2F3B38;
+--warm: #8C7158;
+--body-c: #5E5A54;
+--sage: #AEB8AE;
+--ann: #7D9180;
+--border: #DDD6CF;
+--bord2: #D8CFC3;
+--doc-bg: #FBF7EE;
+--hdr: 64px;
+--pad: clamp(28px, 4.4vw, 64px);
+--serif: 'Cormorant Garamond', Georgia, serif;
+--sans: 'Inter', system-ui, sans-serif;
+}
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: var(--sans); background: var(--cream); color: var(--dark); -webkit-font-smoothing: antialiased; }
-    img, video { display: block; max-width: 100%; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--cream); color: var(--dark); -webkit-font-smoothing: antialiased; }
+img, video { display: block; max-width: 100%; }
 
-    /* ─── HEADER ─── */
-    #hdr {
-      position: fixed; top: 0; left: 0; right: 0; height: var(--hdr);
-      background: var(--cream);
-      border-bottom: 2.5px solid var(--ann);
-      display: flex; align-items: center; padding: 0 44px; z-index: 300;
-    }
-    .hdr-l { display: flex; align-items: center; gap: 10px; flex: 1; overflow: hidden; }
-    .hdr-brand { font-family: var(--serif); font-weight: 600; font-size: 22px; color: var(--dark); letter-spacing: 0.03em; white-space: nowrap; }
-    .hdr-sep { color: var(--border); font-size: 14px; flex-shrink: 0; }
-    .hdr-tag { font-weight: 500; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--warm); white-space: nowrap; }
-    .hdr-title { font-weight: 400; font-size: 13px; color: var(--body-c); white-space: nowrap; }
-    .hdr-num { font-family: var(--serif); font-style: italic; font-size: 13px; color: var(--body-c); margin-left: auto; margin-right: 20px; white-space: nowrap; }
-    .hdr-logo-link { display: flex; align-items: center; flex-shrink: 0; }
-    .hdr-logo { height: 46px; width: auto; max-width: none; object-fit: contain; }
+/* ─── HEADER ─── */
+#hdr {
+position: fixed; top: 0; left: 0; right: 0; height: var(--hdr);
+background: var(--cream);
+border-bottom: 2.5px solid var(--ann);
+display: flex; align-items: center; padding: 0 44px; z-index: 300;
+}
+.hdr-l { display: flex; align-items: center; gap: 10px; flex: 1; overflow: hidden; }
+.hdr-brand { font-family: var(--serif); font-weight: 600; font-size: 22px; color: var(--dark); letter-spacing: 0.03em; white-space: nowrap; }
+.hdr-sep { color: var(--border); font-size: 14px; flex-shrink: 0; }
+.hdr-tag { font-weight: 500; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--warm); white-space: nowrap; }
+.hdr-title { font-weight: 400; font-size: 13px; color: var(--body-c); white-space: nowrap; }
+.hdr-num { font-family: var(--serif); font-style: italic; font-size: 13px; color: var(--body-c); margin-left: auto; margin-right: 20px; white-space: nowrap; }
+.hdr-logo-link { display: flex; align-items: center; flex-shrink: 0; }
+.hdr-logo { height: 46px; width: auto; max-width: none; object-fit: contain; }
 
-    /* ─── DOCUMENT FLOW ─── */
-    #deck { padding-top: var(--hdr); }
-    .slide {
-      position: relative; min-height: 100vh;
-      padding: clamp(28px,4vh,52px) 0;
-      display: flex; flex-direction: column; justify-content: center;
-      overflow: hidden;
-    }
+/* ─── DOCUMENT FLOW ─── */
+#deck { padding-top: var(--hdr); }
+.slide {
+position: relative; min-height: 100vh;
+padding: clamp(28px,4vh,52px) 0;
+display: flex; flex-direction: column; justify-content: center;
+overflow: hidden;
+}
 
-    /* ─── REVEAL SYSTEM ─── */
-    .reveal {
-      opacity: 0; transform: translateY(22px);
-      transition: opacity 1.1s cubic-bezier(.16,.8,.24,1), transform 1.1s cubic-bezier(.16,.8,.24,1);
-    }
-    .reveal.in { opacity: 1; transform: translateY(0); }
-    .reveal.d1 { transition-delay: .05s; }
-    .reveal.d2 { transition-delay: .18s; }
-    .reveal.d3 { transition-delay: .32s; }
-    .reveal.d4 { transition-delay: .46s; }
-    .reveal.d5 { transition-delay: .58s; }
-    .load-in { opacity: 0; transform: translateY(16px); animation: loadIn 1.3s cubic-bezier(.16,.8,.24,1) forwards; }
-    .load-in.ld2 { animation-delay: .22s; }
-    .load-in.ld3 { animation-delay: .42s; }
-    @keyframes loadIn { to { opacity: 1; transform: translateY(0); } }
+/* ─── REVEAL SYSTEM ─── */
+.reveal {
+opacity: 0; transform: translateY(22px);
+transition: opacity 1.1s cubic-bezier(.16,.8,.24,1), transform 1.1s cubic-bezier(.16,.8,.24,1);
+}
+.reveal.in { opacity: 1; transform: translateY(0); }
+.reveal.d1 { transition-delay: .05s; }
+.reveal.d2 { transition-delay: .18s; }
+.reveal.d3 { transition-delay: .32s; }
+.reveal.d4 { transition-delay: .46s; }
+.reveal.d5 { transition-delay: .58s; }
+.load-in { opacity: 0; transform: translateY(16px); animation: loadIn 1.3s cubic-bezier(.16,.8,.24,1) forwards; }
+.load-in.ld2 { animation-delay: .22s; }
+.load-in.ld3 { animation-delay: .42s; }
+@keyframes loadIn { to { opacity: 1; transform: translateY(0); } }
 
-    /* ─── SHARED ATOMS ─── */
-    .label { display: block; font-weight: 500; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; margin-bottom: 16px; }
+/* ─── SHARED ATOMS ─── */
+.label { display: block; font-weight: 500; font-size: 11px; text-transform: uppercase; letter-spacing: 0.22em; margin-bottom: 16px; }
 
-    .tag { font-size: 9.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--ann); }
-    .num-tag {
-      position: absolute; top: -11px; left: -11px; width: 24px; height: 24px; border-radius: 50%;
-      background: var(--cream); border: 1px solid var(--ann); color: var(--ann);
-      font-size: 10px; font-weight: 500; display: flex; align-items: center; justify-content: center;
-      z-index: 5; font-family: var(--sans);
-    }
+.tag { font-size: 9.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--ann); }
+.num-tag {
+position: absolute; top: -11px; left: -11px; width: 24px; height: 24px; border-radius: 50%;
+background: var(--cream); border: 1px solid var(--ann); color: var(--ann);
+font-size: 10px; font-weight: 500; display: flex; align-items: center; justify-content: center;
+z-index: 5; font-family: var(--sans);
+}
 
-    .cap { font-size: 12px; letter-spacing: .015em; color: var(--body-c); margin-top: 10px; line-height: 1.45; }
-    .cap b { font-weight: 500; color: var(--dark); }
-    .cap.lg { font-size: 14px; }
+.cap { font-size: 12px; letter-spacing: .015em; color: var(--body-c); margin-top: 10px; line-height: 1.45; }
+.cap b { font-weight: 500; color: var(--dark); }
+.cap.lg { font-size: 14px; }
 
-    .sage-deco { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
-    .sage-deco::before, .sage-deco::after { content: ''; position: absolute; left: 0; right: 0; height: 1px; background: var(--sage); opacity: 0.18; }
-    .sage-deco::before { top: 16%; }
-    .sage-deco::after  { top: 88%; }
+.sage-deco { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.sage-deco::before, .sage-deco::after { content: ''; position: absolute; left: 0; right: 0; height: 1px; background: var(--sage); opacity: 0.18; }
+.sage-deco::before { top: 16%; }
+.sage-deco::after { top: 88%; }
 
-    .mark { background: linear-gradient(to bottom, transparent 62%, rgba(174,184,174,.42) 62%); padding: 0 1px; }
+.mark { background: linear-gradient(to bottom, transparent 62%, rgba(174,184,174,.42) 62%); padding: 0 1px; }
 
-    .crop-box { overflow: hidden; position: relative; }
-    .crop-box video { position: absolute; width: 100%; height: auto; left: 0; }
+.crop-box { overflow: hidden; position: relative; }
+.crop-box video { position: absolute; width: 100%; height: auto; left: 0; }
 
-    .connector { position: absolute; pointer-events: none; z-index: 1; }
-    .connector line { stroke: var(--ann); stroke-width: 0.65; opacity: .32; }
+.connector { position: absolute; pointer-events: none; z-index: 1; }
+.connector line { stroke: var(--ann); stroke-width: 0.65; opacity: .32; }
 
-    svg.bracket { position: absolute; pointer-events: none; }
-    .bracket path { fill: none; stroke: var(--ann); stroke-width: 1; opacity: .45; }
-
-
-    /* ════════ S1 — COVER ════════ */
-    #s1 { background: #1d2421; overflow: hidden; min-height: 100vh; padding: 0; }
-    #s1 .bg { position: absolute; inset: 0; background: url('MEDIA%20CASE%20STUDY/91.jpg') 60% center / cover no-repeat; }
-    /* Subtle dark layer at bottom-left for text readability only — no other effects on the photo */
-    #s1 .overlay-text {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top,
-        rgba(6,6,4,.52) 0%,
-        rgba(6,6,4,.24) 26%,
-        rgba(6,6,4,.06) 50%,
-        transparent 68%);
-    }
-    #s1 .inner { position: relative; z-index: 2; min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: var(--pad); padding-bottom: calc(var(--pad) * 1.6); }
-    #s1 h1 {
-      font-family: var(--serif); font-style: italic; font-weight: 400;
-      font-size: clamp(52px, 7vw, 112px); line-height: 0.92; color: var(--cream); max-width: 640px;
-      text-shadow: 0 2px 18px rgba(0,0,0,.18);
-    }
-    #s1 .s1-rule { width: 56px; height: 1.5px; background: var(--warm); margin-top: 28px; opacity: .9; }
-    #s1 .scroll-cue { position: absolute; left: var(--pad); bottom: 28px; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: rgba(243,238,231,.5); z-index: 2; }
+svg.bracket { position: absolute; pointer-events: none; }
+.bracket path { fill: none; stroke: var(--ann); stroke-width: 1; opacity: .45; }
 
 
-    /* ════════ S2 — COM'È INIZIATA ════════ */
-    #s2 { background: var(--cream); display: grid; grid-template-columns: 36fr 64fr; align-items: center; min-height: 100vh; }
-    #s2 .s2l { padding: var(--pad); }
-    #s2 .label { color: var(--warm); }
-    #s2 blockquote {
-      font-family: var(--serif); font-style: italic; font-weight: 400;
-      font-size: clamp(22px, 2.4vw, 40px); line-height: 1.18; color: var(--dark); margin-bottom: 24px;
-      border-left: 2px solid var(--warm); padding-left: 16px;
-    }
-    #s2 .s2-body { font-size: clamp(12px, 1.05vw, 15px); line-height: 1.62; color: var(--body-c); margin-bottom: 34px; }
-    #s2 .s2-body p + p { margin-top: .5em; }
-    #s2 .s2-bridge { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: clamp(16px, 1.6vw, 24px); color: var(--warm); line-height: 1.5; }
-    #s2 .s2-bridge span { display: block; }
-    #s2 .s2r { position: relative; display: flex; align-items: center; justify-content: center; padding: clamp(24px,4vh,52px) clamp(20px,3vw,48px); }
-    #s2 .doc-wrap { width: 100%; display: flex; flex-direction: column; align-items: center; }
-    #s2 .doc-tag { align-self: flex-start; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--ann); margin-bottom: 10px; margin-left: 1%; }
-    #s2 .s2-doc {
-      width: 100%;
-      border: 1px solid rgba(216,207,195,.55); box-shadow: 0 14px 50px rgba(47,59,56,.14); overflow: hidden; background: #fff;
-      -webkit-mask-image: linear-gradient(to bottom, #000 68%, transparent 94%);
-              mask-image: linear-gradient(to bottom, #000 68%, transparent 94%);
-    }
-    #s2 .s2-doc img { width: 100%; display: block; }
-    #s2 .s2-cap { align-self: flex-start; margin-left: 1%; margin-top: -10px; }
-    /* small editorial tick next to doc-tag */
-    #s2 .doc-tag::before { content: '—'; margin-right: 6px; opacity: .5; }
+/* ════════ S1 — COVER ════════ */
+#s1 { background: #1d2421; overflow: hidden; min-height: 100vh; padding: 0; }
+#s1 .bg { position: absolute; inset: 0; background: url('MEDIA%20CASE%20STUDY/91.jpg') 60% center / cover no-repeat; }
+/* Subtle dark layer at bottom-left for text readability only — no other effects on the photo */
+#s1 .overlay-text {
+position: absolute; inset: 0;
+background: linear-gradient(to top,
+rgba(6,6,4,.52) 0%,
+rgba(6,6,4,.24) 26%,
+rgba(6,6,4,.06) 50%,
+transparent 68%);
+}
+#s1 .inner { position: relative; z-index: 2; min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: var(--pad); padding-bottom: calc(var(--pad) * 1.6); }
+#s1 h1 {
+font-family: var(--serif); font-style: italic; font-weight: 400;
+font-size: clamp(52px, 7vw, 112px); line-height: 0.92; color: var(--cream); max-width: 640px;
+text-shadow: 0 2px 18px rgba(0,0,0,.18);
+}
+#s1 .s1-rule { width: 56px; height: 1.5px; background: var(--warm); margin-top: 28px; opacity: .9; }
+#s1 .scroll-cue { position: absolute; left: var(--pad); bottom: 28px; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: rgba(243,238,231,.5); z-index: 2; }
 
 
-    /* ════════ S3 — LA SVOLTA ════════ */
-    #s3 { background: var(--cream); display: grid; grid-template-columns: 46fr 54fr; position: relative; min-height: 100vh; align-items: center; }
-    #s3 .s3l { padding: var(--pad); }
-    #s3 .label { color: var(--warm); }
-    #s3 h2 { font-family: var(--serif); font-weight: 400; font-style: normal; font-size: clamp(30px, 3.6vw, 68px); line-height: 0.96; color: var(--dark); margin-bottom: 22px; }
-    #s3 .s3-text { font-size: clamp(11px, 1vw, 15px); line-height: 1.72; color: var(--body-c); max-width: 420px; }
-    #s3 .s3-text p + p { margin-top: .75em; }
-    #s3 .iq { color: var(--dark); font-weight: 500; border-left: 2px solid var(--sage); padding-left: 12px; display: inline-block; }
-    #s3 .lq { color: var(--warm); font-weight: 500; display: block; margin-top: .6em; border-left: 2px solid var(--warm); padding-left: 12px; }
-    #s3 .s3-close { margin-top: 2em; padding-top: .3em; font-style: italic; font-family: var(--serif); font-size: clamp(17px,1.7vw,25px); color: var(--dark); }
-    #s3 .s3r { position: relative; height: 84vh; }
-    #s3 .orbit-wrap { position: relative; width: 100%; height: 100%; }
-
-    /* Wrapper approach: image + caption together in one absolute block */
-    .oc-item { position: absolute; }
-    .oc-item .orbit-card { border: 1px solid var(--bord2); box-shadow: 0 6px 26px rgba(47,59,56,.11); overflow: hidden; background: #fff; }
-    .oc-item .orbit-card img { width: 100%; display: block; }
-    .oc-note { font-size: 10.5px; letter-spacing: .04em; color: var(--body-c); margin-top: 6px; display: block; }
-
-    /* Quad: larger, center-left protagonist */
-    .oc-quad { left: 3%; top: 18%; width: 54%; z-index: 2; }
-    /* Trees: 20% bigger than before */
-    .oc-a1 { left: 57%; top: calc(2% + 50px);  width: 38%; z-index: 3; }
-    .oc-a2 { left: 59%; top: calc(36% + 50px); width: 40%; z-index: 4; }
-    .oc-a3 { left: 43%; top: calc(63% + 50px); width: 40%; z-index: 3; }
-
-
-    /* ════════ S4 — IL LAVORO INVISIBILE ════════ */
-    #s4 { background: var(--cream2); padding: var(--pad); display: flex; flex-direction: column; min-height: 100vh; justify-content: center; }
-    #s4 .s4-hd { flex-shrink: 0; max-width: 860px; margin-bottom: clamp(20px,3vh,34px); }
-    #s4 .label { color: var(--warm); }
-    #s4 h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(22px, 2.5vw, 44px); line-height: 1.1; color: var(--dark); margin-bottom: 14px; }
-    #s4 .s4-text { font-size: clamp(11px, 1.05vw, 15px); line-height: 1.65; color: var(--body-c); max-width: 760px; }
-
-    /* Board: position:relative container for overlapping media */
-    #s4 .s4-board { position: relative; flex: 1; min-height: 480px; max-height: 60vh; }
-    .board-item { position: absolute; }
-    .board-card { border: 1px solid var(--border); border-radius: 4px; box-shadow: 0 10px 36px rgba(47,59,56,.14); overflow: hidden; background: #fff; position: relative; height: 100%; }
-    .board-card img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: top; }
-
-    /* New overlapping composition — each item's height is capped to a % of the board's own
-       (dynamic) height so tall screenshots can never spill past the board into the quote below */
-    /* 1 — mockup_hub_scoperte_NO: protagonist — reduced so the opere panel stays visible and the quote below stays clear */
-    #s4 .bi-mock { left: 28%; top: 4%; width: 50%; height: 88%; z-index: 3; }
-    #s4 .bi-mock .board-card { transform: rotate(-0.4deg); }
-    /* 2 — Evoluzione2_lavori: left, slightly above, overlapping mockup — reduced further so it no longer covers the quote below */
-    #s4 .bi-doc  { left: 2%; top: 0%; width: 23%; height: 56%; z-index: 4; }
-    #s4 .bi-doc .board-card  { transform: rotate(0.7deg); }
-    /* 3 — Screenshot_opere_home: right-below, behind mockup */
-    #s4 .bi-prev { left: 58%; top: 46%; width: 38%; height: 52%; z-index: 2; }
-    #s4 .bi-prev .board-card { transform: rotate(-0.5deg); }
-
-    /* Quote as flow element below board */
-    #s4 .s4-quote-below {
-      flex-shrink: 0;
-      margin-top: clamp(22px, 3.2vh, 38px);
-      max-width: 58%;
-      border-left: 2px solid var(--warm);
-      padding-left: 18px;
-    }
-    #s4 .s4-quote-below blockquote {
-      font-family: var(--serif); font-style: italic; font-weight: 400;
-      font-size: clamp(19px, 1.95vw, 31px); color: var(--warm); line-height: 1.32;
-    }
-    #s4 .s4-quote-below .q-attr { font-size: 9.5px; letter-spacing: .3em; text-transform: uppercase; color: var(--body-c); opacity: .7; margin-top: 8px; }
+/* ════════ S2 — COM'È INIZIATA ════════ */
+#s2 { background: var(--cream); display: grid; grid-template-columns: 36fr 64fr; align-items: center; min-height: 100vh; }
+#s2 .s2l { padding: var(--pad); }
+#s2 .label { color: var(--warm); }
+#s2 blockquote {
+font-family: var(--serif); font-style: italic; font-weight: 400;
+font-size: clamp(22px, 2.4vw, 40px); line-height: 1.18; color: var(--dark); margin-bottom: 24px;
+border-left: 2px solid var(--warm); padding-left: 16px;
+}
+#s2 .s2-body { font-size: clamp(12px, 1.05vw, 15px); line-height: 1.62; color: var(--body-c); margin-bottom: 34px; }
+#s2 .s2-body p + p { margin-top: .5em; }
+#s2 .s2-bridge { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: clamp(16px, 1.6vw, 24px); color: var(--warm); line-height: 1.5; }
+#s2 .s2-bridge span { display: block; }
+#s2 .s2r { position: relative; display: flex; align-items: center; justify-content: center; padding: clamp(24px,4vh,52px) clamp(20px,3vw,48px); }
+#s2 .doc-wrap { width: 100%; display: flex; flex-direction: column; align-items: center; }
+#s2 .doc-tag { align-self: flex-start; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--ann); margin-bottom: 10px; margin-left: 1%; }
+#s2 .s2-doc {
+width: 100%;
+border: 1px solid rgba(216,207,195,.55); box-shadow: 0 14px 50px rgba(47,59,56,.14); overflow: hidden; background: #fff;
+-webkit-mask-image: linear-gradient(to bottom, #000 68%, transparent 94%);
+mask-image: linear-gradient(to bottom, #000 68%, transparent 94%);
+}
+#s2 .s2-doc img { width: 100%; display: block; }
+#s2 .s2-cap { align-self: flex-start; margin-left: 1%; margin-top: -10px; }
+/* small editorial tick next to doc-tag */
+#s2 .doc-tag::before { content: '—'; margin-right: 6px; opacity: .5; }
 
 
-    /* ════════ S5 — IL PROGETTO PRENDE FORMA ════════ */
-    #s5 { background: var(--cream2); padding: var(--pad); display: flex; flex-direction: column; min-height: 100vh; justify-content: center; }
-    #s5 .s5-hd { flex-shrink: 0; max-width: 640px; margin: 0 auto clamp(28px,4.4vh,46px); text-align: center; }
-    #s5 .label { color: var(--ann); display: block; text-align: center; }
-    #s5 h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(22px, 2.5vw, 42px); line-height: 1.1; color: var(--dark); margin-bottom: 10px; }
-    #s5 .s5-text { font-size: clamp(12px, 1.1vw, 15px); line-height: 1.65; color: var(--body-c); }
+/* ════════ S3 — LA SVOLTA ════════ */
+#s3 { background: var(--cream); display: grid; grid-template-columns: 46fr 54fr; position: relative; min-height: 100vh; align-items: center; }
+#s3 .s3l { padding: var(--pad); }
+#s3 .label { color: var(--warm); }
+#s3 h2 { font-family: var(--serif); font-weight: 400; font-style: normal; font-size: clamp(30px, 3.6vw, 68px); line-height: 0.96; color: var(--dark); margin-bottom: 22px; }
+#s3 .s3-text { font-size: clamp(11px, 1vw, 15px); line-height: 1.72; color: var(--body-c); max-width: 420px; }
+#s3 .s3-text p + p { margin-top: .75em; }
+#s3 .iq { color: var(--dark); font-weight: 500; border-left: 2px solid var(--sage); padding-left: 12px; display: inline-block; }
+#s3 .lq { color: var(--warm); font-weight: 500; display: block; margin-top: .6em; border-left: 2px solid var(--warm); padding-left: 12px; }
+#s3 .s3-close { margin-top: 2em; padding-top: .3em; font-style: italic; font-family: var(--serif); font-size: clamp(17px,1.7vw,25px); color: var(--dark); }
+#s3 .s3r { position: relative; height: 84vh; }
+#s3 .orbit-wrap { position: relative; width: 100%; height: 100%; }
 
-    /* Composition with depth: Cabinet | HOME (front) | Expertise */
-    #s5 .s5-row {
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      gap: 0;
-      max-width: 1200px;
-      margin: 0 auto;
-      width: 100%;
-      transform: translateY(-70px);
-    }
-    #s5 .s5-item { flex: 1; max-width: 340px; position: relative; }
-    #s5 .si-home {
-      order: 2;
-      flex: 0.94;
-      max-width: 325px;
-      z-index: 3;
-      margin: 0 -3.5%;
-      transform: translateY(4%);
-    }
-    #s5 .si-cab {
-      order: 1;
-      z-index: 1;
-      transform: scale(0.95) translateY(1.5%);
-      transform-origin: bottom right;
-    }
-    #s5 .si-exp {
-      order: 3;
-      z-index: 1;
-      transform: scale(0.95) translateY(1.5%);
-      transform-origin: bottom left;
-    }
-    #s5 .s5-item .frame { border: 1px solid var(--border); box-shadow: 0 10px 36px rgba(47,59,56,.10); overflow: hidden; background: #fff; }
-    #s5 .si-home .frame { box-shadow: 0 16px 48px rgba(47,59,56,.16); }
-    #s5 .s5-item .frame img { width: 100%; display: block; }
-    #s5 .s5-item .s5-name { display: flex; align-items: center; gap: 8px; margin-top: 14px; }
-    #s5 .s5-item .s5-name .tick { width: 12px; height: 1px; background: var(--sage); }
-    #s5 .s5-item .s5-name span { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ann); }
+/* Wrapper approach: image + caption together in one absolute block */
+.oc-item { position: absolute; }
+.oc-item .orbit-card { border: 1px solid var(--bord2); box-shadow: 0 6px 26px rgba(47,59,56,.11); overflow: hidden; background: #fff; }
+.oc-item .orbit-card img { width: 100%; display: block; }
+.oc-note { font-size: 10.5px; letter-spacing: .04em; color: var(--body-c); margin-top: 6px; display: block; }
+
+/* Quad: larger, center-left protagonist */
+.oc-quad { left: 3%; top: 18%; width: 54%; z-index: 2; }
+/* Trees: 20% bigger than before */
+.oc-a1 { left: 57%; top: calc(2% + 50px); width: 38%; z-index: 3; }
+.oc-a2 { left: 59%; top: calc(36% + 50px); width: 40%; z-index: 4; }
+.oc-a3 { left: 43%; top: calc(63% + 50px); width: 40%; z-index: 3; }
 
 
-    /* ════════ S6 — OLTRE LA TRADUZIONE ════════ */
-    #s6 { background: var(--cream3); display: grid; grid-template-columns: 38fr 62fr; align-items: center; min-height: 100vh; }
-    #s6 .s6l { padding: var(--pad); }
-    #s6 .label { color: var(--ann); }
-    #s6 h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(21px, 2.4vw, 44px); line-height: 1.05; color: var(--dark); margin-bottom: 20px; }
-    #s6 .s6-text { font-size: clamp(11px, 1.05vw, 15px); line-height: 1.72; color: var(--body-c); }
-    #s6 .s6-text p + p { margin-top: .75em; }
-    #s6 .t-accent { color: var(--dark); font-weight: 500; }
-    #s6 .s6r { position: relative; height: 84vh; }
+/* ════════ S4 — IL LAVORO INVISIBILE ════════ */
+#s4 { background: var(--cream2); padding: var(--pad); display: flex; flex-direction: column; min-height: 100vh; justify-content: center; }
+#s4 .s4-hd { flex-shrink: 0; max-width: 860px; margin-bottom: clamp(20px,3vh,34px); }
+#s4 .label { color: var(--warm); }
+#s4 h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(22px, 2.5vw, 44px); line-height: 1.1; color: var(--dark); margin-bottom: 14px; }
+#s4 .s4-text { font-size: clamp(11px, 1.05vw, 15px); line-height: 1.65; color: var(--body-c); max-width: 760px; }
 
-    /* Home EN — now protagonist: larger, fully visible, z-index:1 */
-    #s6 .s6-bg-site {
-      position: absolute; right: 0; top: 3%;
-      width: 88%; height: 90%;
-      border: 1px solid var(--border);
-      box-shadow: 0 10px 44px rgba(47,59,56,.13);
-      overflow: hidden;
-      z-index: 1;
-    }
-    #s6 .s6-bg-site img { width: 100%; height: 100%; object-fit: contain; object-position: center top; display: block; }
-    /* Very light right fade only, so doc transition is smooth */
-    #s6 .s6-bg-site::after {
-      content:''; position:absolute; inset:0;
-      background: linear-gradient(105deg, rgba(234,227,212,0) 70%, var(--cream3) 100%);
-    }
-    /* Caption overlay at bottom of Home EN */
-    #s6 .s6-site-foot {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      padding: 24px 16px 12px;
-      background: linear-gradient(to top, rgba(47,59,56,.65) 0%, transparent 100%);
-    }
-    #s6 .s6-site-foot .tag { color: rgba(243,238,231,.88); font-size: 10px; letter-spacing: .16em; }
+/* Board: position:relative container for overlapping media */
+#s4 .s4-board { position: relative; flex: 1; min-height: 480px; max-height: 60vh; }
+.board-item { position: absolute; }
+.board-card { border: 1px solid var(--border); border-radius: 4px; box-shadow: 0 10px 36px rgba(47,59,56,.14); overflow: hidden; background: #fff; position: relative; height: 100%; }
+.board-card img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: top; }
 
-    /* Translation doc — foreground, overlapping left portion of Home EN */
-    #s6 .s6-doc {
-      position: absolute; left: 0; top: 18%; width: 37%;
-      border: 1px solid var(--border); border-radius: 6px;
-      box-shadow: 0 16px 52px rgba(47,59,56,.22);
-      overflow: hidden; background: #fff; z-index: 2;
-    }
-    #s6 .s6-doc img { width: 100%; display: block; }
-    #s6 .s6-doc .cap { padding: 10px 14px 13px; font-size: 14px; }
+/* New overlapping composition — each item's height is capped to a % of the board's own
+(dynamic) height so tall screenshots can never spill past the board into the quote below */
+/* 1 — mockup_hub_scoperte_NO: protagonist — reduced so the opere panel stays visible and the quote below stays clear */
+#s4 .bi-mock { left: 28%; top: 4%; width: 50%; height: 88%; z-index: 3; }
+#s4 .bi-mock .board-card { transform: rotate(-0.4deg); }
+/* 2 — Evoluzione2_lavori: left, slightly above, overlapping mockup — reduced further so it no longer covers the quote below */
+#s4 .bi-doc { left: 2%; top: 0%; width: 23%; height: 56%; z-index: 4; }
+#s4 .bi-doc .board-card { transform: rotate(0.7deg); }
+/* 3 — Screenshot_opere_home: right-below, behind mockup */
+#s4 .bi-prev { left: 58%; top: 46%; width: 38%; height: 52%; z-index: 2; }
+#s4 .bi-prev .board-card { transform: rotate(-0.5deg); }
 
-    /* WhatsApp — post-it on doc corner, reduced rotation */
-    #s6 .postit {
-      position: absolute; left: 26%; top: 60%; width: 30%; z-index: 3;
-      --r: 1.1deg;
-      border: 1px solid var(--border); border-radius: 6px;
-      box-shadow: 0 12px 34px rgba(47,59,56,.24);
-      overflow: hidden; background: #fff; transform: rotate(var(--r));
-    }
-    #s6 .postit img { width: 100%; display: block; }
+/* Quote as flow element below board */
+#s4 .s4-quote-below {
+flex-shrink: 0;
+margin-top: clamp(22px, 3.2vh, 38px);
+max-width: 58%;
+border-left: 2px solid var(--warm);
+padding-left: 18px;
+}
+#s4 .s4-quote-below blockquote {
+font-family: var(--serif); font-style: italic; font-weight: 400;
+font-size: clamp(19px, 1.95vw, 31px); color: var(--warm); line-height: 1.32;
+}
+#s4 .s4-quote-below .q-attr { font-size: 9.5px; letter-spacing: .3em; text-transform: uppercase; color: var(--body-c); opacity: .7; margin-top: 8px; }
 
 
-    /* ════════ S7 — IL LANCIO · 2×2 grid ════════ */
-    #s7 { background: var(--dark); display: grid; grid-template-columns: 32fr 68fr; min-height: 100vh; color: var(--cream); align-items: center; }
-    #s7 .s7l { padding: var(--pad); }
-    #s7 .label { color: #C9B79C; }
-    #s7 h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(21px, 2.4vw, 42px); line-height: 1.1; color: var(--cream); margin-bottom: 20px; }
-    #s7 .s7-text { font-size: clamp(11px, 1vw, 15px); line-height: 1.72; color: rgba(243,238,231,.66); }
-    #s7 .s7-text p + p { margin-top: .75em; }
-    #s7 .s7-text strong { color: var(--cream); }
-    #s7 .s7r { padding: clamp(24px,4vh,48px) var(--pad) clamp(24px,4vh,48px) 0; }
+/* ════════ S5 — IL PROGETTO PRENDE FORMA ════════ */
+#s5 { background: var(--cream2); padding: var(--pad); display: flex; flex-direction: column; min-height: 100vh; justify-content: center; }
+#s5 .s5-hd { flex-shrink: 0; max-width: 640px; margin: 0 auto clamp(28px,4.4vh,46px); text-align: center; }
+#s5 .label { color: var(--ann); display: block; text-align: center; }
+#s5 h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(22px, 2.5vw, 42px); line-height: 1.1; color: var(--dark); margin-bottom: 10px; }
+#s5 .s5-text { font-size: clamp(12px, 1.1vw, 15px); line-height: 1.65; color: var(--body-c); }
 
-    /* 2×2 grid stage */
-    #s7 .stage {
-      display: grid;
-      grid-template-columns: 1.55fr 1fr;
-      gap: clamp(12px, 1.8vw, 24px);
-      width: 100%;
-    }
-
-    /* Row 1: Videos */
-    #s7 .vf-desk-wrap, #s7 .vf-mob-wrap { display: flex; flex-direction: column; }
-    #s7 .vf-desk, #s7 .vf-mob {
-      width: 100%;
-      overflow: hidden;
-      position: relative;
-      background: #0e1614;
-      border-radius: 8px;
-    }
-    /* Desktop keeps its own native ratio — no forced height, no crop, no black band */
-    #s7 .vf-desk { aspect-ratio: 3342 / 2188; border: 1px solid rgba(243,238,231,.16); box-shadow: 0 18px 60px rgba(0,0,0,.4); }
-    #s7 .vf-mob  { height: 36vh; border: 2px solid rgba(243,238,231,.22); box-shadow: 0 14px 40px rgba(0,0,0,.45); }
-    #s7 .vf-desk .crop-box, #s7 .vf-mob .crop-box { width: 100%; height: 100%; }
-    #s7 .vf-desk video { position: absolute; width: 100%; height: auto; left: 0; top: 0; }
-    #s7 .vf-mob video  { position: absolute; width: 100%; height: auto; left: 0; top: -7.03%; }
-
-    /* Row 2: Proof cards */
-    #s7 .proof-item { display: flex; flex-direction: column; }
-    #s7 .proof-item .frame {
-      border: 1px solid rgba(243,238,231,.16);
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,.3);
-      background: #fff;
-    }
-    #s7 .proof-item .frame img { width: 100%; display: block; }
-    /* Crop the white margin baked into the Search Console screenshot so the chart reads bigger */
-    #s7 .pi-sc .frame img { transform: scale(1.12); }
-
-    /* Captions — 14px minimum across S7 */
-    #s7 .cap-stage { font-size: 14px; letter-spacing: .02em; color: rgba(243,238,231,.7); margin-top: 10px; line-height: 1.4; }
-    #s7 .cap-stage b { color: var(--cream); font-weight: 500; }
-    /* WhatsApp + Search Console captions: +2px per la rifinitura richiesta */
-    #s7 .proof-item .cap-stage { font-size: 16px; }
-
-    /* Thin horizontal separator between grid rows */
-    #s7 .stage-divider {
-      grid-column: 1 / -1;
-      height: 1px;
-      background: rgba(243,238,231,.10);
-      margin: clamp(4px,1vh,10px) 0;
-    }
+/* Composition with depth: Cabinet | HOME (front) | Expertise */
+#s5 .s5-row {
+display: flex;
+align-items: flex-end;
+justify-content: center;
+gap: 0;
+max-width: 1200px;
+margin: 0 auto;
+width: 100%;
+transform: translateY(3px) scale(1.1);
+}
+#s5 .s5-item { flex: 1; max-width: 340px; position: relative; }
+#s5 .si-home {
+order: 2;
+flex: 0.94;
+max-width: 325px;
+z-index: 3;
+margin: 0 -3.5%;
+transform: translateY(4%);
+}
+#s5 .si-cab {
+order: 1;
+z-index: 1;
+transform: scale(0.95) translateY(1.5%);
+transform-origin: bottom right;
+}
+#s5 .si-exp {
+order: 3;
+z-index: 1;
+transform: scale(0.95) translateY(1.5%);
+transform-origin: bottom left;
+}
+#s5 .s5-item .frame { border: 1px solid var(--border); box-shadow: 0 10px 36px rgba(47,59,56,.10); overflow: hidden; background: #fff; }
+#s5 .si-home .frame { box-shadow: 0 16px 48px rgba(47,59,56,.16); }
+#s5 .s5-item .frame img { width: 100%; display: block; }
+#s5 .s5-item .s5-name { display: flex; align-items: center; gap: 8px; margin-top: 14px; }
+#s5 .s5-item .s5-name .tick { width: 12px; height: 1px; background: var(--sage); }
+#s5 .s5-item .s5-name span { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ann); }
 
 
-    /* ════════ SF — SLIDE FINALE ════════ */
-    #sf { position: relative; overflow: hidden; min-height: 100vh; display: flex; }
-    #sf .sf-bg { position: absolute; inset: 0; background: url('MEDIA%20CASE%20STUDY/new_sfondo_hero.jpg') 68% center / cover no-repeat; }
-    #sf .sf-ov { position: absolute; inset: 0; background: rgba(243,238,231,.80); }
-    #sf .sf-inner {
-      position: relative; z-index: 2; flex: 1;
-      display: flex; flex-direction: column; justify-content: center;
-      padding: var(--pad); padding-left: calc(var(--pad) * 1.3);
-    }
-    #sf h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(38px, 5.2vw, 100px); line-height: 0.95; color: var(--dark); margin-bottom: 14px; max-width: 700px; }
-    #sf .sf-sub { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: clamp(24px, 3.1vw, 60px); color: var(--warm); line-height: 1.1; margin-bottom: 24px; }
-    #sf .sf-text { font-size: clamp(13px, 1.4vw, 20px); line-height: 1.58; color: var(--body-c); max-width: 460px; margin-bottom: 36px; }
-    #sf .sf-cta {
-      display: inline-flex; align-items: center; justify-content: center;
-      background: var(--sage); color: var(--dark); font-weight: 500;
-      font-size: clamp(14px, 1.4vw, 22px); padding: 13px 44px;
-      border-radius: 8px; border: none; cursor: pointer; text-decoration: none;
-      box-shadow: 0 2px 12px rgba(47,59,56,.10); transition: background .25s ease;
-      margin-bottom: 22px; width: fit-content;
-    }
-    #sf .sf-cta:hover { background: #9aa5a0; }
-    #sf .sf-footer { font-weight: 500; font-size: 13px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--warm); }
+/* ════════ S6 — OLTRE LA TRADUZIONE ════════ */
+#s6 { background: var(--cream3); display: grid; grid-template-columns: 38fr 62fr; align-items: center; min-height: 100vh; }
+#s6 .s6l { padding: var(--pad); }
+#s6 .label { color: var(--ann); }
+#s6 h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(21px, 2.4vw, 44px); line-height: 1.05; color: var(--dark); margin-bottom: 20px; }
+#s6 .s6-text { font-size: clamp(11px, 1.05vw, 15px); line-height: 1.72; color: var(--body-c); }
+#s6 .s6-text p + p { margin-top: .75em; }
+#s6 .t-accent { color: var(--dark); font-weight: 500; }
+#s6 .s6r { position: relative; height: 84vh; }
 
-    /* Small editorial bracket in sf */
-    #sf .sf-bracket {
-      position: absolute; left: calc(var(--pad) * 1.3 - 20px); top: 50%;
-      transform: translateY(-50%);
-      width: 14px; height: 80px;
-    }
+/* Home EN — now protagonist: larger, fully visible, z-index:1 */
+#s6 .s6-bg-site {
+position: absolute; right: 0; top: 3%;
+width: 88%; height: 90%;
+border: 1px solid var(--border);
+box-shadow: 0 10px 44px rgba(47,59,56,.13);
+overflow: hidden;
+z-index: 1;
+}
+#s6 .s6-bg-site img { width: 100%; height: 100%; object-fit: contain; object-position: center top; display: block; }
+/* Very light right fade only, so doc transition is smooth */
+#s6 .s6-bg-site::after {
+content:''; position:absolute; inset:0;
+background: linear-gradient(105deg, rgba(234,227,212,0) 70%, var(--cream3) 100%);
+}
+/* Caption overlay at bottom of Home EN */
+#s6 .s6-site-foot {
+position: absolute; bottom: 0; left: 0; right: 0;
+padding: 24px 16px 12px;
+background: linear-gradient(to top, rgba(47,59,56,.65) 0%, transparent 100%);
+}
+#s6 .s6-site-foot .tag { color: rgba(243,238,231,.88); font-size: 10px; letter-spacing: .16em; }
 
-  </style>
+/* Translation doc — foreground, overlapping left portion of Home EN */
+#s6 .s6-doc {
+position: absolute; left: 0; top: calc(18% + 285px); width: 35%;
+border: 1px solid var(--border); border-radius: 6px;
+box-shadow: 0 16px 52px rgba(47,59,56,.22);
+overflow: hidden; background: #fff; z-index: 2;
+}
+#s6 .s6-doc img { width: 100%; display: block; }
+#s6 .s6-doc .cap { padding: 10px 14px 13px; font-size: 14px; }
+
+/* WhatsApp — post-it on doc corner, reduced rotation */
+#s6 .postit {
+position: absolute; left: 26%; top: 60%; width: 30%; z-index: 3;
+--r: 1.1deg;
+border: 1px solid var(--border); border-radius: 6px;
+box-shadow: 0 12px 34px rgba(47,59,56,.24);
+overflow: hidden; background: #fff; transform: rotate(var(--r));
+}
+#s6 .postit img { width: 100%; display: block; }
+
+
+/* ════════ S7 — IL LANCIO · 2×2 grid ════════ */
+#s7 { background: var(--dark); display: grid; grid-template-columns: 32fr 68fr; min-height: 100vh; color: var(--cream); align-items: center; }
+#s7 .s7l { padding: var(--pad); }
+#s7 .label { color: #C9B79C; }
+#s7 h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(21px, 2.4vw, 42px); line-height: 1.1; color: var(--cream); margin-bottom: 20px; }
+#s7 .s7-text { font-size: clamp(11px, 1vw, 15px); line-height: 1.72; color: rgba(243,238,231,.66); }
+#s7 .s7-text p + p { margin-top: .75em; }
+#s7 .s7-text strong { color: var(--cream); }
+#s7 .s7r { padding: clamp(24px,4vh,48px) var(--pad) clamp(24px,4vh,48px) 0; }
+
+/* 2×2 grid stage */
+#s7 .stage {
+display: grid;
+grid-template-columns: 1.55fr 1fr;
+gap: clamp(12px, 1.8vw, 24px);
+width: 100%;
+}
+
+/* Row 1: Videos */
+#s7 .vf-desk-wrap, #s7 .vf-mob-wrap { display: flex; flex-direction: column; }
+#s7 .vf-desk, #s7 .vf-mob {
+width: 100%;
+overflow: hidden;
+position: relative;
+background: #0e1614;
+border-radius: 8px;
+}
+/* Desktop keeps its own native ratio — no forced height, no crop, no black band */
+#s7 .vf-desk { aspect-ratio: 3342 / 2188; border: 1px solid rgba(243,238,231,.16); box-shadow: 0 18px 60px rgba(0,0,0,.4); }
+#s7 .vf-mob { height: 36vh; border: 2px solid rgba(243,238,231,.22); box-shadow: 0 14px 40px rgba(0,0,0,.45); }
+#s7 .vf-desk .crop-box, #s7 .vf-mob .crop-box { width: 100%; height: 100%; }
+#s7 .vf-desk video { position: absolute; width: 100%; height: auto; left: 0; top: 0; }
+#s7 .vf-mob video { position: absolute; width: 100%; height: auto; left: 0; top: -7.03%; }
+
+/* Row 2: Proof cards */
+#s7 .proof-item { display: flex; flex-direction: column; }
+#s7 .proof-item .frame {
+border: 1px solid rgba(243,238,231,.16);
+border-radius: 8px;
+overflow: hidden;
+box-shadow: 0 10px 30px rgba(0,0,0,.3);
+background: #fff;
+}
+#s7 .proof-item .frame img { width: 100%; display: block; }
+/* Crop the white margin baked into the Search Console screenshot so the chart reads bigger */
+#s7 .pi-sc .frame img { transform: scale(1); }
+
+/* Captions — 14px minimum across S7 */
+#s7 .cap-stage { font-size: 14px; letter-spacing: .02em; color: rgba(243,238,231,.7); margin-top: 10px; line-height: 1.4; }
+#s7 .cap-stage b { color: var(--cream); font-weight: 500; }
+/* WhatsApp + Search Console captions: +2px per la rifinitura richiesta */
+#s7 .proof-item .cap-stage { font-size: 16px; }
+
+/* Thin horizontal separator between grid rows */
+#s7 .stage-divider {
+grid-column: 1 / -1;
+height: 1px;
+background: rgba(243,238,231,.10);
+margin: clamp(4px,1vh,10px) 0;
+}
+
+
+/* ════════ S8 — I NUMERI DEL PROGETTO ════════ */
+#s8 { background: var(--cream2); }
+#s8 .s8-inner { padding: var(--pad); max-width: 1160px; margin: 0 auto; text-align: center; }
+#s8 .label { color: var(--warm); }
+#s8 h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(30px, 3.6vw, 62px); line-height: 1.05; color: var(--dark); margin-bottom: 22px; }
+#s8 .s8-scope { font-size: clamp(14px, 1.35vw, 19px); line-height: 1.6; color: var(--body-c); max-width: 640px; margin: 0 auto 14px; }
+#s8 .s8-time { font-family: var(--serif); font-style: italic; font-size: clamp(16px, 1.6vw, 24px); color: var(--warm); margin-bottom: 44px; }
+#s8 .s8-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; margin-bottom: 26px; }
+#s8 .s8-stat { background: var(--cream); border-top: 2.5px solid var(--warm); padding: 26px 14px 22px; }
+#s8 .s8-num { font-family: var(--serif); font-weight: 400; font-size: clamp(30px, 3.4vw, 56px); color: var(--dark); line-height: 1; margin-bottom: 10px; }
+#s8 .s8-cap { font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--dark); margin-bottom: 5px; }
+#s8 .s8-sub { font-size: 11.5px; font-style: italic; color: var(--body-c); }
+#s8 .s8-note { font-size: 15px; line-height: 1.6; max-width: 760px; margin: 0 auto; color: var(--dark); letter-spacing: 0.05em; }
+@media (max-width: 760px) { #s8 .s8-stats { grid-template-columns: repeat(2, 1fr); } }
+
+
+/* ════════ SF — SLIDE FINALE ════════ */
+#sf { position: relative; overflow: hidden; min-height: 100vh; display: flex; }
+#sf .sf-bg { position: absolute; inset: 0; background: url('MEDIA%20CASE%20STUDY/new_sfondo_hero.jpg') 68% center / cover no-repeat; }
+#sf .sf-ov { position: absolute; inset: 0; background: rgba(243,238,231,.76); }
+#sf .sf-inner {
+position: relative; z-index: 2; flex: 1;
+display: flex; flex-direction: column; justify-content: center;
+padding: var(--pad); padding-left: calc(var(--pad) * 1.3);
+transform: translateX(85px);
+}
+#sf h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(38px, 5.2vw, 100px); line-height: 0.95; color: var(--dark); margin-bottom: 14px; max-width: 700px; }
+#sf .sf-sub { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: clamp(24px, 3.1vw, 60px); color: var(--warm); line-height: 1.1; margin-bottom: 24px; }
+#sf .sf-text { font-size: clamp(13px, 1.4vw, 20px); line-height: 1.58; color: var(--body-c); max-width: 460px; margin-bottom: 36px; }
+#sf .sf-cta {
+display: inline-flex; align-items: center; justify-content: center;
+background: var(--sage); color: var(--dark); font-weight: 500;
+font-size: clamp(14px, 1.4vw, 22px); padding: 13px 44px;
+border-radius: 8px; border: none; cursor: pointer; text-decoration: none;
+box-shadow: 0 2px 12px rgba(47,59,56,.10); transition: background .25s ease;
+margin-bottom: 22px; width: fit-content;
+}
+#sf .sf-cta:hover { background: #9aa5a0; }
+#sf .sf-footer { font-weight: 500; font-size: 13px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--warm); }
+
+</style>
 </head>
 <body>
 
 <header id="hdr">
-  <div class="hdr-l">
-    <span class="hdr-brand">NAYADRIFT STUDIO</span>
-    <span class="hdr-sep">•</span>
-    <span class="hdr-tag">Case Study</span>
-    <span class="hdr-sep">•</span>
-    <span class="hdr-title">Cabinet d'Expert — Luca Fiorentino</span>
-  </div>
-  <span id="hdr-num" class="hdr-num"></span>
-  <a class="hdr-logo-link" href="https://nayadrift.com" target="_blank" rel="noopener">
-    <img class="hdr-logo" src="MEDIA%20CASE%20STUDY/web/newLogo_transparent.png" alt="Nayadrift">
-  </a>
+<div class="hdr-l">
+<span class="hdr-brand">NAYADRIFT STUDIO</span>
+<span class="hdr-sep">•</span>
+<span class="hdr-tag">Case Study</span>
+<span class="hdr-sep">•</span>
+<span class="hdr-title">Cabinet d'Expert — Luca Fiorentino</span>
+</div>
+<span id="hdr-num" class="hdr-num"></span>
+<a class="hdr-logo-link" href="https://nayadrift.com" target="_blank" rel="noopener">
+<img class="hdr-logo" src="MEDIA%20CASE%20STUDY/web/newLogo_transparent.png" alt="Nayadrift">
+</a>
 </header>
 
 <div id="deck">
 
-  <!-- ══ S1 — COVER ══ -->
-  <section id="s1" class="slide" data-section="01">
-    <div class="bg"></div>
-    <div class="overlay-text"></div>
-    <div class="inner">
-      <h1 class="load-in">Una richiesta<br>semplice, almeno<br>in apparenza.</h1>
-      <div class="s1-rule load-in ld2"></div>
-    </div>
-    <span class="scroll-cue load-in ld3">scorri</span>
-  </section>
+<!-- ══ S1 — COVER ══ -->
+<section id="s1" class="slide" data-section="01">
+<div class="bg"></div>
+<div class="overlay-text"></div>
+<div class="inner">
+<h1 class="load-in">Una richiesta<br>semplice, almeno<br>in apparenza.</h1>
+<div class="s1-rule load-in ld2"></div>
+</div>
+<span class="scroll-cue load-in ld3">scorri</span>
+</section>
 
 
-  <!-- ══ S2 — COM'È INIZIATA ══ -->
-  <section id="s2" class="slide" data-section="02">
-    <div class="s2l">
-      <span class="label reveal d1">Com'è iniziata</span>
-      <blockquote class="reveal d1">"Sto lanciando un progetto digitale nel settore dell'arte. Ho bisogno di qualcuno che mi aiuti con i testi e il posizionamento SEO."</blockquote>
-      <div class="s2-body reveal d2">
-        <p>Un nuovo progetto.</p>
-        <p>Un Cabinet d'Expert.</p>
-        <p>Una reputazione costruita in anni di ricerca.</p>
-        <p>E ancora nessuna forma capace di <span class="mark">raccontare tutto questo online</span>.</p>
-      </div>
-      <p class="s2-bridge reveal d3"><span>Bastava quello.</span><span>Poi c'è stata una call.</span></p>
-    </div>
-    <div class="s2r">
-      <div class="doc-wrap reveal d2">
-        <span class="doc-tag">04 · 02 · 2026 — prima richiesta</span>
-        <div class="s2-doc">
-          <img src="MEDIA%20CASE%20STUDY/web/mail_inizio_testi_clean.png" alt="Prima mail di Luca — richiesta testi e SEO">
-        </div>
-        <p class="cap s2-cap">La mail che ha aperto il progetto.</p>
-      </div>
-    </div>
-  </section>
+<!-- ══ S2 — COM'È INIZIATA ══ -->
+<section id="s2" class="slide" data-section="02">
+<div class="s2l">
+<span class="label reveal d1">Com'è iniziata</span>
+<blockquote class="reveal d1">"Sto lanciando un progetto digitale nel settore dell'arte. Ho bisogno di qualcuno che mi aiuti con i testi e il posizionamento SEO."</blockquote>
+<div class="s2-body reveal d2">
+<p>Un nuovo progetto.</p>
+<p>Un Cabinet d'Expert.</p>
+<p>Una reputazione costruita in anni di ricerca.</p>
+<p>E ancora nessuna forma capace di <span class="mark">raccontare tutto questo online</span>.</p>
+</div>
+<p class="s2-bridge reveal d3"><span>Bastava quello.</span><span>Poi c'è stata una call.</span></p>
+</div>
+<div class="s2r">
+<div class="doc-wrap reveal d2">
+<span class="doc-tag">04 · 02 · 2026 — prima richiesta</span>
+<div class="s2-doc">
+<img src="MEDIA%20CASE%20STUDY/web/mail_inizio_testi_clean.png" alt="Prima mail di Luca — richiesta testi e SEO">
+</div>
+<p class="cap s2-cap">La mail che ha aperto il progetto.</p>
+</div>
+</div>
+</section>
 
 
-  <!-- ══ S3 — LA SVOLTA ══ -->
-  <section id="s3" class="slide" data-section="03">
-    <div class="sage-deco"></div>
-    <div class="s3l">
-      <span class="label reveal d1">La Svolta</span>
-      <h2 class="reveal d1">Una call.<br>Tre persone.<br>Una direzione<br>diversa.</h2>
-      <div class="s3-text reveal d2">
-        <p>Quella call serviva soprattutto a conoscere Flavio, il web designer, e confrontarci sulla struttura del sito.</p>
-        <p>Dopo pochi minuti non sono più riuscita a limitarmi ad ascoltare.</p>
-        <p><span class="iq">"Ragazzi, io farei così."</span></p>
-        <p>Ho iniziato a spiegare come immaginavo il progetto: un Cabinet come cuore del sito, pagine dedicate alle Opere Ritrovate, ai progetti di ricerca e ai casi studio.</p>
-        <p>Luca ha ascoltato in silenzio. Poi si è rivolto a Flavio:</p>
-        <p><span class="lq">"Sono assolutamente d'accordo con Gas. Flavio, prova a sviluppare secondo le sue indicazioni."</span></p>
-        <p class="s3-close">Da quel momento il mio ruolo è cambiato.</p>
-      </div>
-    </div>
-    <div class="s3r">
-      <div class="orbit-wrap">
+<!-- ══ S3 — LA SVOLTA ══ -->
+<section id="s3" class="slide" data-section="03">
+<div class="sage-deco"></div>
+<div class="s3l">
+<span class="label reveal d1">La Svolta</span>
+<h2 class="reveal d1">Una call.<br>Tre persone.<br>Una direzione<br>diversa.</h2>
+<div class="s3-text reveal d2">
+<p>Quella call serviva soprattutto a conoscere Flavio, il web designer, e confrontarci sulla struttura del sito.</p>
+<p>Dopo pochi minuti non sono più riuscita a limitarmi ad ascoltare.</p>
+<p><span class="iq">"Ragazzi, io farei così."</span></p>
+<p>Ho iniziato a spiegare come immaginavo il progetto: un Cabinet come cuore del sito, pagine dedicate alle Opere Ritrovate, ai progetti di ricerca e ai casi studio.</p>
+<p>Luca ha ascoltato in silenzio. Poi si è rivolto a Flavio:</p>
+<p><span class="lq">"Sono assolutamente d'accordo con Gas. Flavio, prova a sviluppare secondo le sue indicazioni."</span></p>
+<p class="s3-close">Da quel momento il mio ruolo è cambiato.</p>
+</div>
+</div>
+<div class="s3r">
+<div class="orbit-wrap">
 
-        <!-- Quaderno: protagonist, center-left, larger -->
-        <div class="oc-item oc-quad reveal d1">
-          <div class="orbit-card">
-            <img src="MEDIA%20CASE%20STUDY/Quaderno.jpg" alt="Appunti della call">
-          </div>
-          <p class="oc-note">Appunti della call.</p>
-        </div>
+<!-- Quaderno: protagonist, center-left, larger -->
+<div class="oc-item oc-quad reveal d1">
+<div class="orbit-card">
+<img src="MEDIA%20CASE%20STUDY/Quaderno.jpg" alt="Appunti della call">
+</div>
+<p class="oc-note">Appunti della call.</p>
+</div>
 
-        <!-- Tree 1: upper right -->
-        <div class="oc-item oc-a1 reveal d2">
-          <div class="orbit-card">
-            <img src="MEDIA%20CASE%20STUDY/ALBERO1.jpg" alt="Prima ipotesi di architettura">
-          </div>
-          <p class="oc-note">1 — Prima ipotesi.</p>
-        </div>
+<!-- Tree 1: upper right -->
+<div class="oc-item oc-a1 reveal d2">
+<div class="orbit-card">
+<img src="MEDIA%20CASE%20STUDY/ALBERO1.jpg" alt="Prima ipotesi di architettura">
+</div>
+<p class="oc-note">1 — Prima ipotesi.</p>
+</div>
 
-        <!-- Tree 2: right middle -->
-        <div class="oc-item oc-a2 reveal d3">
-          <div class="orbit-card">
-            <img src="MEDIA%20CASE%20STUDY/ALBERO2.jpg" alt="Seconda ipotesi di architettura">
-          </div>
-          <p class="oc-note">2 — Il Cabinet prende centralità.</p>
-        </div>
+<!-- Tree 2: right middle -->
+<div class="oc-item oc-a2 reveal d3">
+<div class="orbit-card">
+<img src="MEDIA%20CASE%20STUDY/ALBERO2.jpg" alt="Seconda ipotesi di architettura">
+</div>
+<p class="oc-note">2 — Il Cabinet prende centralità.</p>
+</div>
 
-        <!-- Tree 3: lower center-right -->
-        <div class="oc-item oc-a3 reveal d4">
-          <div class="orbit-card">
-            <img src="MEDIA%20CASE%20STUDY/ALBERO3.jpg" alt="Terza ipotesi di architettura">
-          </div>
-          <p class="oc-note">3 — Evoluzione della struttura.</p>
-        </div>
+<!-- Tree 3: lower center-right -->
+<div class="oc-item oc-a3 reveal d4">
+<div class="orbit-card">
+<img src="MEDIA%20CASE%20STUDY/ALBERO3.jpg" alt="Terza ipotesi di architettura">
+</div>
+<p class="oc-note">3 — Evoluzione della struttura.</p>
+</div>
 
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ══ S4 — IL LAVORO INVISIBILE ══ -->
-  <section id="s4" class="slide" data-section="04">
-    <div class="s4-hd">
-      <span class="label reveal d1">Il lavoro invisibile</span>
-      <h2 class="reveal d1">Non tutte le soluzioni hanno funzionato al primo tentativo.</h2>
-      <p class="s4-text reveal d2">Una direzione condivisa non significa una soluzione immediata. Alcune idee sono state esplorate, altre scartate, altre ancora riscritte fino a trovare il punto di equilibrio. È proprio in questa fase che il progetto ha smesso di essere una serie di pagine ed è diventato un sistema coerente.</p>
-    </div>
-
-    <div class="s4-board">
-      <!-- 1 — mockup scartato: protagonist, center-right -->
-      <div class="board-item bi-mock reveal d2">
-        <div class="board-card">
-          <span class="num-tag">1</span>
-          <img src="MEDIA%20CASE%20STUDY/mockup_hub_scoperte_NO.jpg" alt="Proposta di mockup scartata">
-        </div>
-        <p class="cap lg" style="margin-top:8px;"><b>Una proposta scartata.</b> Il primo tentativo di Hub Expertise.</p>
-      </div>
-
-      <!-- 2 — email revisioni: sinistra, sopra, si sovrappone al mockup -->
-      <div class="board-item bi-doc reveal d3">
-        <div class="board-card">
-          <span class="num-tag">2</span>
-          <img src="MEDIA%20CASE%20STUDY/Evoluzione2_lavori.png" alt="Revisione testi via email">
-        </div>
-        <p class="cap lg" style="margin-top:8px;"><b>Le revisioni via email.</b></p>
-      </div>
-
-      <!-- 3 — anteprima sito: destra-basso, dietro il mockup -->
-      <div class="board-item bi-prev reveal d4">
-        <div class="board-card">
-          <span class="num-tag">3</span>
-          <img src="MEDIA%20CASE%20STUDY/Screenshot%20opere_home.jpg" alt="Anteprima del sito">
-        </div>
-        <p class="cap lg" style="margin-top:8px;"><b>Il sito che prende forma.</b></p>
-      </div>
-    </div>
-
-    <!-- Citazione: sotto la composizione, come elemento in flow -->
-    <div class="s4-quote-below reveal d5">
-      <blockquote>"Gas ha compreso bene a cosa mi serve e come va strutturato."</blockquote>
-      <p class="q-attr">Luca Fiorentino — Email al web designer</p>
-    </div>
-  </section>
+</div>
+</div>
+</section>
 
 
-  <!-- ══ S5 — IL PROGETTO PRENDE FORMA ══ -->
-  <section id="s5" class="slide" data-section="05">
-    <div class="s5-hd">
-      <span class="label reveal d1">Il progetto prende forma</span>
-      <h2 class="reveal d1">Il momento in cui tutto ha iniziato a parlare la stessa lingua.</h2>
-      <p class="s5-text reveal d2">Dopo mesi di confronto, progettazione e sviluppo, il progetto ha finalmente trovato la sua forma. Non un semplice sito, ma una presenza online pensata per dare spazio alla ricerca, all'expertise e al Cabinet, mantenendo la stessa identità in ogni pagina e in ogni lingua.</p>
-    </div>
-    <div class="s5-row">
-      <!-- Home: centro, primo piano, leggermente più grande -->
-      <div class="s5-item si-home reveal d2">
-        <div class="frame"><img src="MEDIA%20CASE%20STUDY/Screen_home_v4.jpg" alt="Home"></div>
-        <div class="s5-name"><span class="tick"></span><span>Home</span></div>
-      </div>
-      <!-- Cabinet: sinistra, leggermente arretrato (order:1 via CSS) -->
-      <div class="s5-item si-cab reveal d3">
-        <div class="frame"><img src="MEDIA%20CASE%20STUDY/Cabinet_fiorentino.jpg" alt="Cabinet"></div>
-        <div class="s5-name"><span class="tick"></span><span>Cabinet</span></div>
-      </div>
-      <!-- Expertise: destra, leggermente arretrato (order:3 via CSS) -->
-      <div class="s5-item si-exp reveal d4">
-        <div class="frame"><img src="MEDIA%20CASE%20STUDY/Expertise_apr25.jpg" alt="Expertise"></div>
-        <div class="s5-name"><span class="tick"></span><span>Expertise</span></div>
-      </div>
-    </div>
-  </section>
+<!-- ══ S4 — IL LAVORO INVISIBILE ══ -->
+<section id="s4" class="slide" data-section="04">
+<div class="s4-hd">
+<span class="label reveal d1">Il lavoro invisibile</span>
+<h2 class="reveal d1">Non tutte le soluzioni hanno funzionato al primo tentativo.</h2>
+<p class="s4-text reveal d2">Una direzione condivisa non significa una soluzione immediata. Alcune idee sono state esplorate, altre scartate, altre ancora riscritte fino a trovare il punto di equilibrio. È proprio in questa fase che il progetto ha smesso di essere una serie di pagine ed è diventato un sistema coerente.</p>
+</div>
+
+<div class="s4-board">
+<!-- 1 — mockup scartato: protagonist, center-right -->
+<div class="board-item bi-mock reveal d2">
+<div class="board-card">
+<span class="num-tag">1</span>
+<img src="MEDIA%20CASE%20STUDY/mockup_hub_scoperte_NO.jpg" alt="Proposta di mockup scartata">
+</div>
+<p class="cap lg" style="margin-top:8px;"><b>Una proposta scartata.</b> Il primo tentativo di Hub Expertise.</p>
+</div>
+
+<!-- 2 — email revisioni: sinistra, sopra, si sovrappone al mockup -->
+<div class="board-item bi-doc reveal d3">
+<div class="board-card">
+<span class="num-tag">2</span>
+<img src="MEDIA%20CASE%20STUDY/Evoluzione2_lavori.png" alt="Revisione testi via email">
+</div>
+<p class="cap lg" style="margin-top:8px;"><b>Le revisioni via email.</b></p>
+</div>
+
+<!-- 3 — anteprima sito: destra-basso, dietro il mockup -->
+<div class="board-item bi-prev reveal d4">
+<div class="board-card">
+<span class="num-tag">3</span>
+<img src="MEDIA%20CASE%20STUDY/Screenshot%20opere_home.jpg" alt="Anteprima del sito">
+</div>
+<p class="cap lg" style="margin-top:8px;"><b>Il sito che prende forma.</b></p>
+</div>
+</div>
+
+<!-- Citazione: sotto la composizione, come elemento in flow -->
+<div class="s4-quote-below reveal d5">
+<blockquote>"Gas ha compreso bene a cosa mi serve e come va strutturato."</blockquote>
+<p class="q-attr">Luca Fiorentino — Email al web designer</p>
+</div>
+</section>
 
 
-  <!-- ══ S6 — OLTRE LA TRADUZIONE ══ -->
-  <section id="s6" class="slide" data-section="06">
-    <div class="s6l">
-      <span class="label reveal d1">Oltre la traduzione</span>
-      <h2 class="reveal d1">Lo stesso progetto.<br>La stessa identità.<br>Un'altra lingua.</h2>
-      <div class="s6-text reveal d2">
-        <p><span class="t-accent">Il lavoro non era finito.</span></p>
-        <p>Il sito doveva parlare anche a chi avrebbe scoperto il lavoro di Luca direttamente in inglese.</p>
-        <p>Ogni pagina, ogni titolo e ogni scelta terminologica sono stati rivisti per mantenere la stessa identità anche cambiando lingua.</p>
-        <p><span class="t-accent">Doveva sembrare che quel progetto fosse nato così.</span></p>
-      </div>
-    </div>
-    <div class="s6r">
-
-      <!-- 3 — Homepage EN: media principale, grande, visibile -->
-      <div class="s6-bg-site reveal d3">
-        <img src="MEDIA%20CASE%20STUDY/Screenshot%20Home_EN.jpg" alt="Homepage EN versione inglese">
-        <div class="s6-site-foot">
-          <span class="tag">3 — Homepage EN · risultato finale</span>
-        </div>
-      </div>
-
-      <!-- SVG connector from doc to WA -->
-      <svg class="connector" viewBox="0 0 100 100" preserveAspectRatio="none"
-           style="position:absolute;inset:0;width:100%;height:100%;z-index:5;">
-        <line class="reveal d3" x1="38" y1="62" x2="38" y2="68" />
-      </svg>
-
-      <!-- 1 — Documento traduzione: foreground, sovrapposto a EN -->
-      <div class="s6-doc reveal d2">
-        <img src="MEDIA%20CASE%20STUDY/Mail_lavori_EN.jpg" alt="Documento di traduzione">
-        <p class="cap lg">1 — Il documento di traduzione.</p>
-      </div>
-
-      <!-- 2 — WhatsApp: post-it sull'angolo del documento -->
-      <div class="postit reveal d4">
-        <img src="MEDIA%20CASE%20STUDY/web/wa_naming_crop.png" alt="Confronto sul naming EN">
-      </div>
-
-    </div>
-  </section>
+<!-- ══ S5 — IL PROGETTO PRENDE FORMA ══ -->
+<section id="s5" class="slide" data-section="05">
+<div class="s5-hd">
+<span class="label reveal d1">Il progetto prende forma</span>
+<h2 class="reveal d1">Il momento in cui tutto ha iniziato a parlare la stessa lingua.</h2>
+<p class="s5-text reveal d2">Dopo mesi di confronto, progettazione e sviluppo, il progetto ha finalmente trovato la sua forma. Non un semplice sito, ma una presenza online pensata per dare spazio alla ricerca, all'expertise e al Cabinet, mantenendo la stessa identità in ogni pagina e in ogni lingua.</p>
+</div>
+<div class="s5-row">
+<!-- Home: centro, primo piano, leggermente più grande -->
+<div class="s5-item si-home reveal d2">
+<div class="frame"><img src="MEDIA%20CASE%20STUDY/Screen_home_v4.jpg" alt="Home"></div>
+<div class="s5-name"><span class="tick"></span><span>Home</span></div>
+</div>
+<!-- Cabinet: sinistra, leggermente arretrato (order:1 via CSS) -->
+<div class="s5-item si-cab reveal d3">
+<div class="frame"><img src="MEDIA%20CASE%20STUDY/Cabinet_fiorentino.jpg" alt="Cabinet"></div>
+<div class="s5-name"><span class="tick"></span><span>Cabinet</span></div>
+</div>
+<!-- Expertise: destra, leggermente arretrato (order:3 via CSS) -->
+<div class="s5-item si-exp reveal d4">
+<div class="frame"><img src="MEDIA%20CASE%20STUDY/Expertise_apr25.jpg" alt="Expertise"></div>
+<div class="s5-name"><span class="tick"></span><span>Expertise</span></div>
+</div>
+</div>
+</section>
 
 
-  <!-- ══ S7 — IL LANCIO ══ -->
-  <section id="s7" class="slide" data-section="07">
-    <div class="s7l">
-      <span class="label reveal d1">Il lancio</span>
-      <h2 class="reveal d1">Il giorno in cui il Cabinet è uscito allo scoperto.</h2>
-      <div class="s7-text reveal d2">
-        <p><strong>Alle 17:00 era programmata la pubblicazione del sito.</strong></p>
-        <p><strong>Alle 17:05 Luca era già in iperventilazione.</strong></p>
-        <p>Dopo qualche minuto il sito era finalmente online.</p>
-        <p>Nelle ore successive sono arrivati numerosi messaggi di apprezzamento da colleghi, clienti e collaboratori, fino al messaggio di un cliente americano poche ore dopo la pubblicazione.</p>
-        <p><strong>Non avevamo semplicemente pubblicato un sito. Avevamo costruito uno spazio in cui Luca riusciva finalmente a riconoscersi.</strong></p>
-      </div>
-    </div>
-    <div class="s7r">
-      <!-- 2×2 grid: video desktop | video mobile / feedback WA | search console -->
-      <div class="stage">
+<!-- ══ S6 — OLTRE LA TRADUZIONE ══ -->
+<section id="s6" class="slide" data-section="06">
+<div class="s6l">
+<span class="label reveal d1">Oltre la traduzione</span>
+<h2 class="reveal d1">Lo stesso progetto.<br>La stessa identità.<br>Un'altra lingua.</h2>
+<div class="s6-text reveal d2">
+<p><span class="t-accent">Il lavoro non era finito.</span></p>
+<p>Il sito doveva parlare anche a chi avrebbe scoperto il lavoro di Luca direttamente in inglese.</p>
+<p>Ogni pagina, ogni titolo e ogni scelta terminologica sono stati rivisti per mantenere la stessa identità anche cambiando lingua.</p>
+<p><span class="t-accent">Doveva sembrare che quel progetto fosse nato così.</span></p>
+</div>
+</div>
+<div class="s6r">
 
-        <!-- RIGA 1 · Video Desktop -->
-        <div class="vf-desk-wrap reveal d2">
-          <div class="vf-desk">
-            <div class="crop-box">
-              <video autoplay muted loop playsinline>
-                <source src="MEDIA%20CASE%20STUDY/web/desktop_sito.mp4" type="video/mp4">
-              </video>
-            </div>
-          </div>
-          <p class="cap-stage"><b>Desktop.</b> Navigazione del sito dopo la pubblicazione.</p>
-        </div>
+<!-- 3 — Homepage EN: media principale, grande, visibile -->
+<div class="s6-bg-site reveal d3">
+<img src="MEDIA%20CASE%20STUDY/Screenshot%20Home_EN.jpg" alt="Homepage EN versione inglese">
+<div class="s6-site-foot">
+<span class="tag">3 — Homepage EN · risultato finale</span>
+</div>
+</div>
 
-        <!-- RIGA 1 · Video Mobile -->
-        <div class="vf-mob-wrap reveal d3">
-          <div class="vf-mob">
-            <div class="crop-box">
-              <video autoplay muted loop playsinline>
-                <source src="MEDIA%20CASE%20STUDY/web/mobile_sito.mp4" type="video/mp4">
-              </video>
-            </div>
-          </div>
-          <p class="cap-stage"><b>Mobile.</b> Stessa esperienza, stesso giorno.</p>
-        </div>
+<!-- SVG connector from doc to WA -->
+<svg class="connector" viewBox="0 0 100 100" preserveAspectRatio="none"
+style="position:absolute;inset:0;width:100%;height:100%;z-index:5;">
+<line class="reveal d3" x1="38" y1="62" x2="38" y2="68" />
+</svg>
 
-        <!-- Thin separator between rows -->
-        <div class="stage-divider"></div>
+<!-- 1 — Documento traduzione: foreground, sovrapposto a EN -->
+<div class="s6-doc reveal d2">
+<img src="MEDIA%20CASE%20STUDY/Mail_lavori_EN.jpg" alt="Documento di traduzione">
+<p class="cap lg">1 — Il documento di traduzione.</p>
+</div>
 
-        <!-- RIGA 2 · Feedback WhatsApp -->
-        <div class="proof-item pi-wa reveal d4">
-          <div class="frame">
-            <img src="MEDIA%20CASE%20STUDY/Wa_feedback.png" alt="Messaggio cliente americano">
-          </div>
-          <p class="cap-stage"><b>Primo feedback.</b> Un cliente americano poche ore dopo il lancio.</p>
-        </div>
+<!-- 2 — WhatsApp: post-it sull'angolo del documento -->
+<div class="postit reveal d4">
+<img src="MEDIA%20CASE%20STUDY/web/wa_naming_crop.png" alt="Confronto sul naming EN">
+</div>
 
-        <!-- RIGA 2 · Search Console -->
-        <div class="proof-item pi-sc reveal d5">
-          <div class="frame">
-            <img src="MEDIA%20CASE%20STUDY/Impression_Clicks.jpg" alt="Search Console impressioni e click">
-          </div>
-          <p class="cap-stage"><b>Primi risultati.</b> Impressioni e click su Search Console.</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
+</div>
+</section>
 
 
-  <!-- ══ SF — SLIDE FINALE ══ -->
-  <section id="sf" class="slide" data-section="—">
-    <div class="sf-bg"></div>
-    <div class="sf-ov"></div>
+<!-- ══ S7 — IL LANCIO ══ -->
+<section id="s7" class="slide" data-section="07">
+<div class="s7l">
+<span class="label reveal d1">Il lancio</span>
+<h2 class="reveal d1">Il giorno in cui il Cabinet è uscito allo scoperto.</h2>
+<div class="s7-text reveal d2">
+<p><strong>Alle 17:00 era programmata la pubblicazione del sito.</strong></p>
+<p><strong>Alle 17:05 Luca era già in iperventilazione.</strong></p>
+<p>Dopo qualche minuto il sito era finalmente online.</p>
+<p>Nelle ore successive sono arrivati numerosi messaggi di apprezzamento da colleghi, clienti e collaboratori, fino al messaggio di un cliente americano poche ore dopo la pubblicazione.</p>
+<p><strong>Non avevamo semplicemente pubblicato un sito. Avevamo costruito uno spazio in cui Luca riusciva finalmente a riconoscersi.</strong></p>
+</div>
+</div>
+<div class="s7r">
+<!-- 2×2 grid: video desktop | video mobile / feedback WA | search console -->
+<div class="stage">
 
-    <!-- Editorial bracket -->
-    <svg class="sf-bracket bracket" viewBox="0 0 14 80">
-      <path d="M10,4 L3,4 L3,76 L10,76" />
-    </svg>
+<!-- RIGA 1 · Video Desktop -->
+<div class="vf-desk-wrap reveal d2">
+<div class="vf-desk">
+<div class="crop-box">
+<video autoplay muted loop playsinline>
+<source src="MEDIA%20CASE%20STUDY/web/desktop_sito.mp4" type="video/mp4">
+</video>
+</div>
+</div>
+<p class="cap-stage"><b>Desktop.</b> Navigazione del sito dopo la pubblicazione.</p>
+</div>
 
-    <div class="sf-inner">
-      <h2 class="reveal d1">Ogni progetto inizia allo stesso modo.</h2>
-      <p class="sf-sub reveal d2">Con una conversazione.</p>
-      <p class="sf-text reveal d2">Perché una presenza forte può nascere dall'ascolto.<br>Dietro ogni progetto c'è una storia, una ricerca e una voce che meritano di essere comprese prima ancora di essere raccontate.</p>
-      <a class="sf-cta reveal d3" href="https://nayadrift.com" target="_blank" rel="noopener">Parliamone</a>
-      <p class="sf-footer reveal d3">nayadrift.com</p>
-    </div>
-  </section>
+<!-- RIGA 1 · Video Mobile -->
+<div class="vf-mob-wrap reveal d3">
+<div class="vf-mob">
+<div class="crop-box">
+<video autoplay muted loop playsinline>
+<source src="MEDIA%20CASE%20STUDY/web/mobile_sito.mp4" type="video/mp4">
+</video>
+</div>
+</div>
+<p class="cap-stage"><b>Mobile.</b> Stessa esperienza, stesso giorno.</p>
+</div>
+
+<!-- Thin separator between rows -->
+<div class="stage-divider"></div>
+
+<!-- RIGA 2 · Feedback WhatsApp -->
+<div class="proof-item pi-wa reveal d4">
+<div class="frame">
+<img src="MEDIA%20CASE%20STUDY/Wa_feedback.png" alt="Messaggio cliente americano">
+</div>
+<p class="cap-stage"><b>Primo feedback.</b> Un cliente americano poche ore dopo il lancio.</p>
+</div>
+
+<!-- RIGA 2 · Search Console -->
+<div class="proof-item pi-sc reveal d5">
+<div class="frame">
+<img src="MEDIA%20CASE%20STUDY/Impression_Clicks.jpg" alt="Search Console impressioni e click">
+</div>
+<p class="cap-stage"><b>Primi risultati.</b> Impressioni e click su Search Console.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+
+<!-- ══ S8 — I NUMERI DEL PROGETTO ══ -->
+<section id="s8" class="slide" data-section="08">
+<div class="s8-inner">
+<span class="label reveal d1">I numeri del progetto</span>
+<h2 class="reveal d1">Cosa c'è dietro questo progetto.</h2>
+<p class="s8-scope reveal d2">Architettura del sito, testi in italiano e in inglese, SEO on page, coordinamento del web designer e gestione del progetto dalla prima call alla pubblicazione.</p>
+<p class="s8-time reveal d2">Dall'inizio del lavoro al sito online: due mesi e mezzo.</p>
+<div class="s8-stats">
+<div class="s8-stat reveal d2">
+<div class="s8-num">235</div>
+<div class="s8-cap">Apparizioni su Google</div>
+<div class="s8-sub">partendo da zero</div>
+</div>
+<div class="s8-stat reveal d3">
+<div class="s8-num">7,8</div>
+<div class="s8-cap">Posizione media su Google</div>
+<div class="s8-sub">in prima pagina dei risultati</div>
+</div>
+<div class="s8-stat reveal d4">
+<div class="s8-num">14,9%</div>
+<div class="s8-cap">CTR medio</div>
+<div class="s8-sub">quando appare, viene cliccato</div>
+</div>
+<div class="s8-stat reveal d5">
+<div class="s8-num">5'47"</div>
+<div class="s8-cap">Tempo di lettura</div>
+<div class="s8-sub">scheda di attribuzione, versione EN</div>
+</div>
+</div>
+<p class="s8-scope reveal d5" style="margin-bottom:14px;">Oltre al nome di Luca, il sito compare già nelle ricerche per Legnanino, Claudio Beaumont, Andrea Lanzani e Francesco Cairo. Google ha associato il Cabinet alla storia dell'arte del Seicento e del Settecento.</p>
+<p class="s8-note reveal d5">Dati Google Search Console e GA4, primo mese dalla pubblicazione.</p>
+</div>
+</section>
+
+
+<!-- ══ SF — SLIDE FINALE ══ -->
+<section id="sf" class="slide" data-section="—">
+<div class="sf-bg"></div>
+<div class="sf-ov"></div>
+
+<div class="sf-inner">
+<h2 class="reveal d1">Ogni progetto inizia allo stesso modo.</h2>
+<p class="sf-sub reveal d2">Con una conversazione.</p>
+<p class="sf-text reveal d2">Perché una presenza forte può nascere dall'ascolto.<br>Dietro ogni progetto c'è una storia, una ricerca e una voce che meritano di essere comprese prima ancora di essere raccontate.</p>
+<a class="sf-cta reveal d3" href="https://nayadrift.com/contatti" target="_blank" rel="noopener">Parliamone</a>
+<p class="sf-footer reveal d3">nayadrift.com</p>
+</div>
+</section>
 
 </div>
 
 <script>
-  const numEl = document.getElementById('hdr-num');
+const numEl = document.getElementById('hdr-num');
 
-  // Reveal on scroll
-  const revealIo = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('in');
-        revealIo.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-  document.querySelectorAll('.reveal').forEach(el => revealIo.observe(el));
+// Reveal on scroll
+const revealIo = new IntersectionObserver((entries) => {
+entries.forEach(e => {
+if (e.isIntersecting) {
+e.target.classList.add('in');
+revealIo.unobserve(e.target);
+}
+});
+}, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealIo.observe(el));
 
-  // Slide counter in header
-  const sectionIo = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.intersectionRatio > 0.4) {
-        numEl.textContent = e.target.dataset.section || '';
-      }
-    });
-  }, { threshold: [0.4] });
-  document.querySelectorAll('.slide').forEach(s => sectionIo.observe(s));
+// Slide counter in header
+const sectionIo = new IntersectionObserver((entries) => {
+entries.forEach(e => {
+if (e.intersectionRatio > 0.4) {
+numEl.textContent = e.target.dataset.section || '';
+}
+});
+}, { threshold: [0.4] });
+document.querySelectorAll('.slide').forEach(s => sectionIo.observe(s));
 </script>
 
 </body>
 </html>
+  
