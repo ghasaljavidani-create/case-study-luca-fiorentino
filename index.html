@@ -106,8 +106,13 @@ svg.bracket { position: absolute; pointer-events: none; }
 
 
 /* ════════ S1 — COVER ════════ */
-#s1 { background: #1d2421; overflow: hidden; min-height: 100vh; padding: 0; }
+#s1 { background: #1d2421; overflow: hidden; min-height: 100vh; padding: 0; justify-content: flex-end; }
 #s1 .bg { position: absolute; inset: 0; background: url('MEDIA%20CASE%20STUDY/91.jpg') 60% center / cover no-repeat; }
+#s1 .bg::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: rgba(18, 14, 8, .60);
+}
 /* Subtle dark layer at bottom-left for text readability only — no other effects on the photo */
 #s1 .overlay-text {
 position: absolute; inset: 0;
@@ -117,13 +122,46 @@ rgba(6,6,4,.24) 26%,
 rgba(6,6,4,.06) 50%,
 transparent 68%);
 }
-#s1 .inner { position: relative; z-index: 2; min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: var(--pad); padding-bottom: calc(var(--pad) * 1.6); }
+#s1 .inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  padding: 36px 40px;
+  margin: 0 0 48px var(--pad);
+  background: radial-gradient(ellipse 110% 100% at 0% 100%,
+    rgba(6,4,2,.09) 0%,
+    rgba(6,4,2,.04) 55%,
+    transparent 80%);
+}
 #s1 h1 {
 font-family: var(--serif); font-style: italic; font-weight: 400;
-font-size: clamp(52px, 7vw, 112px); line-height: 0.92; color: var(--cream); max-width: 640px;
+font-size: clamp(38px, 5.2vw, 82px); line-height: 0.92; color: var(--cream);
+white-space: nowrap;
 text-shadow: 0 2px 18px rgba(0,0,0,.18);
+padding-right: 70px;
 }
-#s1 .s1-rule { width: 56px; height: 1.5px; background: var(--warm); margin-top: 28px; opacity: .9; }
+#s1 .s1-rule { width: 56px; height: 1.5px; background: var(--warm); margin-top: 36px; opacity: .9; }
+#s1 .s1-sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(20px, 1.6vw, 36px);
+  color: rgba(243,238,231,.72);
+  line-height: 1.68;
+  max-width: 400px;
+  margin-top: 18px;
+}
+#s1 .s1-firma {
+  font-family: var(--sans);
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: rgba(243,238,231,.58);
+  margin-top: 24px;
+}
 #s1 .scroll-cue { position: absolute; left: var(--pad); bottom: 28px; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: rgba(243,238,231,.5); z-index: 2; }
 
 
@@ -159,38 +197,74 @@ mask-image: linear-gradient(to bottom, #000 68%, transparent 94%);
 #s3 { background: var(--cream); display: grid; grid-template-columns: 46fr 54fr; position: relative; min-height: 100vh; align-items: center; }
 #s3 .s3l { padding: var(--pad); }
 #s3 .label { color: var(--warm); }
-#s3 h2 { font-family: var(--serif); font-weight: 400; font-style: normal; font-size: clamp(30px, 3.6vw, 68px); line-height: 0.96; color: var(--dark); margin-bottom: 22px; }
-#s3 .s3-text { font-size: clamp(11px, 1vw, 15px); line-height: 1.72; color: var(--body-c); max-width: 420px; }
+#s3 h2 { font-family: var(--serif); font-weight: 400; font-style: normal; font-size: clamp(30px, 3.6vw, 68px); line-height: 0.96; color: var(--dark); margin-bottom: 34px; }
+#s3 .s3-text { font-size: clamp(11px, 1vw, 15px); line-height: 1.72; color: var(--body-c); max-width: 470px; }
 #s3 .s3-text p + p { margin-top: .75em; }
 #s3 .iq { color: var(--dark); font-weight: 500; border-left: 2px solid var(--sage); padding-left: 12px; display: inline-block; }
 #s3 .lq { color: var(--warm); font-weight: 500; display: block; margin-top: .6em; border-left: 2px solid var(--warm); padding-left: 12px; }
-#s3 .s3-close { margin-top: 2em; padding-top: .3em; font-style: italic; font-family: var(--serif); font-size: clamp(17px,1.7vw,25px); color: var(--dark); }
+#s3 .s3-close { margin-top: 1em; padding-top: .3em; font-style: italic; font-family: var(--serif); font-size: clamp(17px,1.7vw,25px); color: var(--dark); }
 #s3 .s3r { position: relative; height: 84vh; }
 #s3 .orbit-wrap { position: relative; width: 100%; height: 100%; }
+#s3 .s3-end{
+    margin-top: 1.6em;
+    margin-bottom: .25em;
+}
+#s3 .s3-close{
+    margin-top: 0;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(17px,1.7vw,25px);
+    line-height: 1.35;
+    color: var(--dark);
+}
 
 /* Wrapper approach: image + caption together in one absolute block */
 .oc-item { position: absolute; }
-.oc-item .orbit-card { border: 1px solid var(--bord2); box-shadow: 0 6px 26px rgba(47,59,56,.11); overflow: hidden; background: #fff; }
+.oc-item .orbit-card { border: 1px solid var(--bord2); box-shadow: 0 14px 34px rgba(47,59,56,.16); overflow: hidden; background: #fff; }
 .oc-item .orbit-card img { width: 100%; display: block; }
 .oc-note { font-size: 10.5px; letter-spacing: .04em; color: var(--body-c); margin-top: 6px; display: block; }
 
 /* Quad: larger, center-left protagonist */
-.oc-quad { left: 3%; top: 18%; width: 54%; z-index: 2; }
+.oc-quad { left: 6%; top: 19%; width: 50%; z-index: 2; }
 /* Trees: 20% bigger than before */
-.oc-a1 { left: 57%; top: calc(2% + 50px); width: 38%; z-index: 3; }
-.oc-a2 { left: 59%; top: calc(36% + 50px); width: 40%; z-index: 4; }
-.oc-a3 { left: 43%; top: calc(63% + 50px); width: 40%; z-index: 3; }
+.oc-a1 { left: 60%; top: calc(5% + 50px); width: 36%; z-index: 3; }
+.oc-a2 { left: 57%; top: calc(39% + 50px); width: 40%; z-index: 4; }
+.oc-a3 { left: 47%; top: calc(72% + 50px); width: 37%; z-index: 3; }
 
 
 /* ════════ S4 — IL LAVORO INVISIBILE ════════ */
-#s4 { background: var(--cream2); padding: var(--pad); display: flex; flex-direction: column; min-height: 100vh; justify-content: center; }
-#s4 .s4-hd { flex-shrink: 0; max-width: 860px; margin-bottom: clamp(20px,3vh,34px); }
-#s4 .label { color: var(--warm); }
-#s4 h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(22px, 2.5vw, 44px); line-height: 1.1; color: var(--dark); margin-bottom: 14px; }
-#s4 .s4-text { font-size: clamp(11px, 1.05vw, 15px); line-height: 1.65; color: var(--body-c); max-width: 760px; }
 
+#s4 { background: var(--cream2); padding: var(--pad); display: flex; flex-direction: column; min-height: 100vh; justify-content: center; }
+#s4 .s4-top{
+    display:grid;
+    grid-template-columns: minmax(430px, 500px) 1fr;
+    gap:40px;
+    align-items:start;
+}
+#s4 .s4-hd { flex-shrink: 0; max-width: 680px; margin-bottom: clamp(20px,3vh,42px); }
+#s4 .label { color: var(--warm); }
+#s4 h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(26px, 2.9vw, 50px); line-height: 1.05; color: var(--dark); margin-bottom: 14px; }
+#s4 .s4-text{
+    font-size: clamp(12px,1.15vw,17px);
+    line-height:1.75;
+    color:var(--body-c);
+    max-width:520px;
+}
+#s4 .s4-text p + p{
+    margin-top:.8em;
+}
+
+#s4 .s4-final {
+  margin-top: 0.8em;
+  font-weight: 500;
+  color: var(--dark);
+}
 /* Board: position:relative container for overlapping media */
-#s4 .s4-board { position: relative; flex: 1; min-height: 480px; max-height: 60vh; }
+#s4 .s4-board {
+    position: relative;
+    width: 100%;
+    min-height: 560px;
+}
 .board-item { position: absolute; }
 .board-card { border: 1px solid var(--border); border-radius: 4px; box-shadow: 0 10px 36px rgba(47,59,56,.14); overflow: hidden; background: #fff; position: relative; height: 100%; }
 .board-card img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: top; }
@@ -198,36 +272,53 @@ mask-image: linear-gradient(to bottom, #000 68%, transparent 94%);
 /* New overlapping composition — each item's height is capped to a % of the board's own
 (dynamic) height so tall screenshots can never spill past the board into the quote below */
 /* 1 — mockup_hub_scoperte_NO: protagonist — reduced so the opere panel stays visible and the quote below stays clear */
-#s4 .bi-mock { left: 28%; top: 4%; width: 50%; height: 88%; z-index: 3; }
+#s4 .bi-mock { left: 26%; top: 1%; width: 40%; height: 74%; z-index: 3; }
 #s4 .bi-mock .board-card { transform: rotate(-0.4deg); }
 /* 2 — Evoluzione2_lavori: left, slightly above, overlapping mockup — reduced further so it no longer covers the quote below */
-#s4 .bi-doc { left: 2%; top: 0%; width: 23%; height: 56%; z-index: 4; }
+#s4 .bi-doc { left: 4%; top: 6%; width: 20%; height: 52%; z-index: 4; }
 #s4 .bi-doc .board-card { transform: rotate(0.7deg); }
 /* 3 — Screenshot_opere_home: right-below, behind mockup */
-#s4 .bi-prev { left: 58%; top: 46%; width: 38%; height: 52%; z-index: 2; }
+#s4 .bi-prev { left: 60%; top: 18%; width: 46%; height: 66%; z-index: 2; }
 #s4 .bi-prev .board-card { transform: rotate(-0.5deg); }
 
-/* Quote as flow element below board */
-#s4 .s4-quote-below {
-flex-shrink: 0;
-margin-top: clamp(22px, 3.2vh, 38px);
-max-width: 58%;
-border-left: 2px solid var(--warm);
-padding-left: 18px;
+/* Quote sotto la composizione */
+
+#s4 .s4-quote-below{
+
+    position:absolute;
+
+    left:26%;
+
+    top:102%;
+
+    width:42%;
+
+    border-left:2px solid var(--warm);
+
+    padding-left:18px;
+
 }
 #s4 .s4-quote-below blockquote {
 font-family: var(--serif); font-style: italic; font-weight: 400;
 font-size: clamp(19px, 1.95vw, 31px); color: var(--warm); line-height: 1.32;
 }
-#s4 .s4-quote-below .q-attr { font-size: 9.5px; letter-spacing: .3em; text-transform: uppercase; color: var(--body-c); opacity: .7; margin-top: 8px; }
-
 
 /* ════════ S5 — IL PROGETTO PRENDE FORMA ════════ */
 #s5 { background: var(--cream2); padding: var(--pad); display: flex; flex-direction: column; min-height: 100vh; justify-content: center; }
 #s5 .s5-hd { flex-shrink: 0; max-width: 640px; margin: 0 auto clamp(28px,4.4vh,46px); text-align: center; }
-#s5 .label { color: var(--ann); display: block; text-align: center; }
-#s5 h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(22px, 2.5vw, 42px); line-height: 1.1; color: var(--dark); margin-bottom: 10px; }
-#s5 .s5-text { font-size: clamp(12px, 1.1vw, 15px); line-height: 1.65; color: var(--body-c); }
+#s5 .label { color: var(--ann); display: block; text-align: center; margin-bottom: 50px; }
+#s5 h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(22px, 2.5vw, 42px); line-height: 1.1; color: var(--dark); margin-bottom: 30px; }
+#s5 .s5-text{
+
+    font-size: clamp(14px, 1.1vw, 15px);
+    line-height: 1.8;
+    color: var(--body-c);
+    max-width: 500px;
+    margin: 0 auto;
+}
+#s5 .s5-text p + p{
+    margin-top: 0.9em;
+}
 
 /* Composition with depth: Cabinet | HOME (front) | Expertise */
 #s5 .s5-row {
@@ -236,7 +327,7 @@ align-items: flex-end;
 justify-content: center;
 gap: 0;
 max-width: 1200px;
-margin: 0 auto;
+margin: 50px auto 0;
 width: 100%;
 transform: translateY(3px) scale(1.1);
 }
@@ -297,14 +388,14 @@ background: linear-gradient(105deg, rgba(234,227,212,0) 70%, var(--cream3) 100%)
 /* Caption overlay at bottom of Home EN */
 #s6 .s6-site-foot {
 position: absolute; bottom: 0; left: 0; right: 0;
-padding: 24px 16px 12px;
+padding: 10px 16px 8px;
 background: linear-gradient(to top, rgba(47,59,56,.65) 0%, transparent 100%);
 }
-#s6 .s6-site-foot .tag { color: rgba(243,238,231,.88); font-size: 10px; letter-spacing: .16em; }
+#s6 .s6-site-foot .tag { color: rgba(245,241,233,.90); font-size: 10px; letter-spacing: .16em; }
 
 /* Translation doc — foreground, overlapping left portion of Home EN */
 #s6 .s6-doc {
-position: absolute; left: 0; top: calc(18% + 285px); width: 35%;
+position: absolute; left: 0%; top: calc(18% + 285px); width: 35%;
 border: 1px solid var(--border); border-radius: 6px;
 box-shadow: 0 16px 52px rgba(47,59,56,.22);
 overflow: hidden; background: #fff; z-index: 2;
@@ -409,7 +500,7 @@ margin: clamp(4px,1vh,10px) 0;
 position: relative; z-index: 2; flex: 1;
 display: flex; flex-direction: column; justify-content: center;
 padding: var(--pad); padding-left: calc(var(--pad) * 1.3);
-transform: translateX(235px);
+transform: translateX(250px);
 }
 #sf h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(38px, 5.2vw, 100px); line-height: 0.95; color: var(--dark); margin-bottom: 14px; max-width: 700px; }
 #sf .sf-sub { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: clamp(24px, 3.1vw, 60px); color: var(--warm); line-height: 1.1; margin-bottom: 24px; }
@@ -450,8 +541,10 @@ margin-bottom: 22px; width: fit-content;
 <div class="bg"></div>
 <div class="overlay-text"></div>
 <div class="inner">
-<h1 class="load-in">Una richiesta<br>semplice, almeno<br>in apparenza.</h1>
-<div class="s1-rule load-in ld2"></div>
+  <h1 class="load-in">Ogni opera trova la sua cornice.</h1>
+  <div class="s1-rule load-in ld2"></div>
+  <p class="s1-sub load-in ld2">La nascita del Fiorentino Cabinet d’Expert: dare forma all’identità digitale di una nuova visione, nata da oltre vent’anni di esperienza e ricerca nel mondo dell’arte.</p>
+  <p class="s1-firma load-in ld3">Strategia · Posizionamento · Contenuti · Copywriting · SEO · Direzione del progetto</p>
 </div>
 <span class="scroll-cue load-in ld3">scorri</span>
 </section>
@@ -461,14 +554,19 @@ margin-bottom: 22px; width: fit-content;
 <section id="s2" class="slide" data-section="02">
 <div class="s2l">
 <span class="label reveal d1">Com'è iniziata</span>
-<blockquote class="reveal d1">"Sto lanciando un progetto digitale nel settore dell'arte. Ho bisogno di qualcuno che mi aiuti con i testi e il posizionamento SEO."</blockquote>
+<blockquote class="reveal d1">"Sto costruendo il sito del mio nuovo Cabinet d’Expert. Ho bisogno di qualcuno che mi aiuti con i testi e il posizionamento SEO, perché rappresenti davvero il mio lavoro e sia facilmente trovato online."</blockquote>
 <div class="s2-body reveal d2">
-<p>Un nuovo progetto.</p>
-<p>Un Cabinet d'Expert.</p>
-<p>Una reputazione costruita in anni di ricerca.</p>
-<p>E ancora nessuna forma capace di <span class="mark">raccontare tutto questo online</span>.</p>
+<p>Un progetto ambizioso stava nascendo.</p>
+<p>Dopo anni di ricerca, attribuzioni, pubblicazioni e collaborazioni, mancava ancora una presenza online capace di restituire davvero quel percorso.</p>
+<p>L'obiettivo non era semplicemente pubblicare un sito.</p>
+<p>
+   <span class="mark">Era costruire una presenza digitale all’altezza della sua autorevolezza.</span>
+</p>
 </div>
-<p class="s2-bridge reveal d3"><span>Bastava quello.</span><span>Poi c'è stata una call.</span></p>
+<p class="s2-bridge reveal d3">
+<span>Da quella mail è iniziata una conversazione.</span>
+<span>Novanta minuti dopo, il progetto aveva già cambiato direzione.</span>
+</p>
 </div>
 <div class="s2r">
 <div class="doc-wrap reveal d2">
@@ -487,15 +585,18 @@ margin-bottom: 22px; width: fit-content;
 <div class="sage-deco"></div>
 <div class="s3l">
 <span class="label reveal d1">La Svolta</span>
-<h2 class="reveal d1">Una call.<br>Tre persone.<br>Una direzione<br>diversa.</h2>
+<h2 class="reveal d1">Una call.<br>Tre persone.<br>Una nuova<br>direzione.</h2>
 <div class="s3-text reveal d2">
-<p>Quella call serviva soprattutto a conoscere Flavio, il web designer, e confrontarci sulla struttura del sito.</p>
-<p>Dopo pochi minuti non sono più riuscita a limitarmi ad ascoltare.</p>
+<p>Quella call serviva soprattutto a conoscere Flavio, il web designer che stava già lavorando al sito.</p>
+<p>Esisteva già un'identità visiva.</p>
+<p>Presentazione che mi aveva colpita ma non sono più riuscita a limitarmi ad ascoltare e parlare di testi.</p>
 <p><span class="iq">"Ragazzi, io farei così."</span></p>
-<p>Ho iniziato a spiegare come immaginavo il progetto: un Cabinet come cuore del sito, pagine dedicate alle Opere Ritrovate, ai progetti di ricerca e ai casi studio.</p>
+<p>Ho iniziato a immaginare il Cabinet come il centro del progetto. Da lì prendevano forma la ricerca, le opere ritrovate, le attribuzioni e tutto il resto.</p>
 <p>Luca ha ascoltato in silenzio. Poi si è rivolto a Flavio:</p>
-<p><span class="lq">"Sono assolutamente d'accordo con Gas. Flavio, prova a sviluppare secondo le sue indicazioni."</span></p>
-<p class="s3-close">Da quel momento il mio ruolo è cambiato.</p>
+<p><span class="lq">"Sono assolutamente d'accordo con Gas. Provate a sviluppare in questa direzione."</span></p>
+<p class="s3-end">
+Da quel momento non stavamo più costruendo semplicemente un sito.</p>
+<p class="s3-close">Stavamo costruendo il modo in cui il Cabinet avrebbe iniziato a raccontarsi online.</p>
 </div>
 </div>
 <div class="s3r">
@@ -540,11 +641,36 @@ margin-bottom: 22px; width: fit-content;
 
 <!-- ══ S4 — IL LAVORO INVISIBILE ══ -->
 <section id="s4" class="slide" data-section="04">
-<div class="s4-hd">
-<span class="label reveal d1">Il lavoro invisibile</span>
-<h2 class="reveal d1">Non tutte le soluzioni hanno funzionato al primo tentativo.</h2>
-<p class="s4-text reveal d2">Una direzione condivisa non significa una soluzione immediata. Alcune idee sono state esplorate, altre scartate, altre ancora riscritte fino a trovare il punto di equilibrio. È proprio in questa fase che il progetto ha smesso di essere una serie di pagine ed è diventato un sistema coerente.</p>
-</div>
+
+<div class="s4-top">
+
+    <div class="s4-hd">
+
+        <span class="label reveal d1">Il lavoro invisibile</span>
+<h2 class="reveal d1">Le idee migliori nascono da confronti, scelte e revisioni</h2>
+<div class="s4-text">
+
+  <p>
+    Il primo impianto del sito esisteva già, ma non rappresentava ancora
+    il modo in cui il Cabinet avrebbe dovuto raccontarsi.
+  </p>
+  <p>
+    Da lì è iniziato un lavoro fatto di ascolto, confronto e revisioni continue.
+  </p>
+  <p>
+    Ogni proposta veniva discussa insieme.
+    Alcune idee sono rimaste, altre sono cambiate completamente.
+    Nessuna è stata difesa per principio.
+  </p>
+  <p>
+    La differenza non l'hanno fatta le competenze prese singolarmente.
+  </p>
+  <p class="s4-final">
+    L'ha fatta la disponibilità ad ascoltarsi, mettere in discussione le proprie idee
+    e costruire insieme una soluzione migliore.
+  </p>
+  </div> <!-- CHIUDE s4-text -->
+  </div> <!-- CHIUDE s4-hd -->
 
 <div class="s4-board">
 <!-- 1 — mockup scartato: protagonist, center-right -->
@@ -553,7 +679,7 @@ margin-bottom: 22px; width: fit-content;
 <span class="num-tag">1</span>
 <img src="MEDIA%20CASE%20STUDY/mockup_hub_scoperte_NO.jpg" alt="Proposta di mockup scartata">
 </div>
-<p class="cap lg" style="margin-top:8px;"><b>Una proposta scartata.</b> Il primo tentativo di Hub Expertise.</p>
+<p class="cap lg" style="margin-top:8px;"><b>Il primo tentativo di Hub Expertise</b></p>
 </div>
 
 <!-- 2 — email revisioni: sinistra, sopra, si sovrappone al mockup -->
@@ -562,7 +688,7 @@ margin-bottom: 22px; width: fit-content;
 <span class="num-tag">2</span>
 <img src="MEDIA%20CASE%20STUDY/Evoluzione2_lavori.png" alt="Revisione testi via email">
 </div>
-<p class="cap lg" style="margin-top:8px;"><b>Le revisioni via email.</b></p>
+<p class="cap lg" style="margin-top:8px;"><b>Le revisioni via email</b></p>
 </div>
 
 <!-- 3 — anteprima sito: destra-basso, dietro il mockup -->
@@ -571,14 +697,13 @@ margin-bottom: 22px; width: fit-content;
 <span class="num-tag">3</span>
 <img src="MEDIA%20CASE%20STUDY/Screenshot%20opere_home.jpg" alt="Anteprima del sito">
 </div>
-<p class="cap lg" style="margin-top:8px;"><b>Il sito che prende forma.</b></p>
+<p class="cap lg" style="margin-top:8px;"><b>La versione che ha dato forma al progetto</b></p>
 </div>
-</div>
-
 <!-- Citazione: sotto la composizione, come elemento in flow -->
 <div class="s4-quote-below reveal d5">
 <blockquote>"Gas ha compreso bene a cosa mi serve e come va strutturato."</blockquote>
 <p class="q-attr">Luca Fiorentino — Email al web designer</p>
+</div>
 </div>
 </section>
 
@@ -586,10 +711,32 @@ margin-bottom: 22px; width: fit-content;
 <!-- ══ S5 — IL PROGETTO PRENDE FORMA ══ -->
 <section id="s5" class="slide" data-section="05">
 <div class="s5-hd">
-<span class="label reveal d1">Il progetto prende forma</span>
-<h2 class="reveal d1">Il momento in cui tutto ha iniziato a parlare la stessa lingua.</h2>
-<p class="s5-text reveal d2">Dopo mesi di confronto, progettazione e sviluppo, il progetto ha finalmente trovato la sua forma. Non un semplice sito, ma una presenza online pensata per dare spazio alla ricerca, all'expertise e al Cabinet, mantenendo la stessa identità in ogni pagina e in ogni lingua.</p>
+<span class="label reveal d1">Una struttura pensata per essere trovata</span>
+<h2 class="reveal d1">Ogni pagina doveva funzionare anche da sola. Insieme.</h2>
+<p class="s5-text reveal d2"><div class="s5-text reveal d2">
+<p>
+Un sito non si legge dall’inizio alla fine.
+</p>
+<p>Ogni pagina può essere la porta d’ingresso.
+
+</p>
+Deve raccontare chi sei e il valore del tuo lavoro.
+Arrivare alle persone che ancora non sanno che esisti. 
+<p>
+Per questo ogni sezione è stata progettata per avere un ruolo preciso: farsi trovare, incuriosire, spiegare e convincere.
+</p>
+<p>
+Quando contenuti, struttura, immagini, design e sviluppo lavorano nella stessa direzione, il risultato non è solo un sito più bello.
+</p>
+<p>
+È un progetto che riesce a distinguersi. 
+</p>
+Trasmette fiducia.</p>
+<p>
+Può trasformare un visitatore nella persona che deciderà di contattarti.
+</p>
 </div>
+
 <div class="s5-row">
 <!-- Home: centro, primo piano, leggermente più grande -->
 <div class="s5-item si-home reveal d2">
@@ -618,8 +765,11 @@ margin-bottom: 22px; width: fit-content;
 <div class="s6-text reveal d2">
 <p><span class="t-accent">Il lavoro non era finito.</span></p>
 <p>Il sito doveva parlare anche a chi avrebbe scoperto il lavoro di Luca direttamente in inglese.</p>
-<p>Ogni pagina, ogni titolo e ogni scelta terminologica sono stati rivisti per mantenere la stessa identità anche cambiando lingua.</p>
-<p><span class="t-accent">Doveva sembrare che quel progetto fosse nato così.</span></p>
+<p>Ogni pagina, ogni titolo e ogni parola sono stati rivisti per mantenere la stessa identità anche cambiando lingua.</p>
+<p>Non bastava tradurre.</p>
+<p>Bisognava conservare autorevolezza, precisione e credibilità.</p>
+<p>Per chi visitava il sito dall’estero non doveva esistere una “versione inglese”. Doveva esistere semplicemente il Cabinet d’Expert.</p>
+<p><span class="t-accent">Il risultato non è stata una traduzione. È stata la stessa autorevolezza, in un’altra lingua.</span></p>
 </div>
 </div>
 <div class="s6r">
@@ -632,11 +782,6 @@ margin-bottom: 22px; width: fit-content;
 </div>
 </div>
 
-<!-- SVG connector from doc to WA -->
-<svg class="connector" viewBox="0 0 100 100" preserveAspectRatio="none"
-style="position:absolute;inset:0;width:100%;height:100%;z-index:5;">
-<line class="reveal d3" x1="38" y1="62" x2="38" y2="68" />
-</svg>
 
 <!-- 1 — Documento traduzione: foreground, sovrapposto a EN -->
 <div class="s6-doc reveal d2">
@@ -663,7 +808,7 @@ style="position:absolute;inset:0;width:100%;height:100%;z-index:5;">
 <p><strong>Alle 17:05 Luca era già in iperventilazione.</strong></p>
 <p>Dopo qualche minuto il sito era finalmente online.</p>
 <p>Nelle ore successive sono arrivati numerosi messaggi di apprezzamento da colleghi, clienti e collaboratori, fino al messaggio di un cliente americano poche ore dopo la pubblicazione.</p>
-<p><strong>Non avevamo semplicemente pubblicato un sito. Avevamo costruito uno spazio in cui Luca riusciva finalmente a riconoscersi.</strong></p>
+<p><strong>Non avevamo semplicemente pubblicato un sito. Avevamo finalmente costruito una presenza capace di raccontare Luca con la stessa eleganza, lo stesso rigore e la stessa cura che lo contraddistinguono offline.</strong></p>
 </div>
 </div>
 <div class="s7r">
